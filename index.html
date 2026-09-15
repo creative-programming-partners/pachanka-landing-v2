@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pachanka Restaurant — Criollo · Fusión en Jesús María</title>
+<meta name="description" content="Pachanka: cocina criolla con fusión, piqueos, barra y música en vivo en Jesús María, Lima. Reserva por WhatsApp.">
+<meta property="og:title" content="Pachanka Restaurant — Criollo · Fusión">
+<meta property="og:description" content="Cocina criolla, piqueos y after office en Jr. Coronel Camilo Carrillo 169, Jesús María.">
+<meta property="og:image" content="assets/img/tragos-barra.jpg">
+<meta name="theme-color" content="#0B0A09">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0A09'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia' font-size='44' font-weight='700' fill='%23D4A25F'%3EP%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script>document.documentElement.classList.add('js');if('scrollRestoration' in history)history.scrollRestoration='manual';</script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- PANTALLA DE CARGA -->
+<div class="loader" id="loader" aria-hidden="true">
+  <span class="wm" data-wm></span>
+  <span class="loader-bar"><i></i></span>
+</div>
+<script src="js/intro.js"></script>
+
+<!-- CABECERA -->
+<header class="hdr" id="hdr">
+  <div class="hdr-left">
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-controls="drawer" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a class="hdr-logo" href="#inicio" aria-label="Pachanka, inicio"><span class="wm" data-wm></span></a>
+  </div>
+  <a class="pill pill--accent" href="https://wa.me/51971969101?text=Hola%20Pachanka%2C%20quisiera%20reservar%20una%20mesa" target="_blank" rel="noopener">Reserva aquí</a>
+</header>
+
+<div class="overlay" id="overlay"></div>
+<nav class="drawer" id="drawer" aria-label="Menú principal" aria-hidden="true">
+  <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">&times;</button>
+  <ul>
+    <li><a class="drawer-cta" href="https://wa.me/51971969101?text=Hola%20Pachanka%2C%20quisiera%20reservar%20una%20mesa" target="_blank" rel="noopener">Reserva aquí</a></li>
+    <li class="drawer-sep"></li>
+    <li><a href="#manifiesto">Manifiesto Pachanka</a></li>
+    <li><a href="#carta">Nuestra carta</a></li>
+    <li><a href="#reservas">Reservas</a></li>
+    <li><a href="#eventos">Eventos y celebraciones</a></li>
+    <li><a href="#ubicanos">Ubícanos</a></li>
+  </ul>
+</nav>
+
+<main>
+<!-- PORTADA -->
+<section class="hero" id="inicio">
+  <div class="hero-media" aria-hidden="true">
+    <div class="hero-col" style="--i:1"><div class="hc" data-speed="10"><img src="assets/img/hamburguesa.jpg" alt="" width="695" height="914" fetchpriority="high"></div></div>
+    <div class="hero-col" style="--i:0"><div class="hc" data-speed="4"><img src="assets/img/tragos-barra.jpg" alt="" width="726" height="914" fetchpriority="high"></div></div>
+    <div class="hero-col" style="--i:2"><div class="hc" data-speed="14"><img src="assets/img/alitas.jpg" alt="" width="728" height="915" fetchpriority="high"></div></div>
+  </div>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <h1 class="sr">Pachanka Restaurant</h1>
+  <div class="hero-logo" aria-hidden="true">
+    <span class="wm" data-wm></span>
+    <span class="hero-logo-sub">Restaurant</span>
+  </div>
+  <div class="hero-copy">
+    <p class="hero-title"><span class="mask"><span>Sabor criollo,</span></span><span class="mask"><span>alma de fiesta</span></span></p>
+    <p class="hero-meta">Criollo · Fusión &nbsp;—&nbsp; Jesús María, Lima</p>
+  </div>
+  <a class="hero-scroll" href="#manifiesto" aria-label="Bajar al manifiesto"><i></i></a>
+</section>
+
+<!-- MANIFIESTO -->
+<section class="manifesto" id="manifiesto">
+  <div class="strip" aria-hidden="false">
+    <div class="strip-media" aria-hidden="true">
+      <img src="assets/img/show-criollo.jpg" alt="" width="361" height="640" loading="lazy" decoding="async">
+      <img src="assets/img/mesa-familia.jpg" alt="" width="360" height="640" loading="lazy" decoding="async">
+      <img src="assets/img/fachada-equipo.jpg" alt="" width="360" height="640" loading="lazy" decoding="async">
+      <img src="assets/img/cumpleanos.jpg" alt="" width="480" height="440" loading="lazy" decoding="async">
+    </div>
+    <h2 class="strip-title rv">Manifiesto<br>Pachanka</h2>
+  </div>
+
+  <div class="poem">
+    <p class="st st--l"><span class="ln">No es solo un restaurante.</span><span class="ln">Es una reunión.</span></p>
+    <p class="st st--r"><span class="ln">Pachanka nació en Jesús María para juntar mesas,</span><span class="ln">no para separarlas.</span></p>
+    <p class="st st--l"><span class="ln">Una cocina criolla que conversa con la selva,</span><span class="ln">con el chifa y con el mar. Que respeta la receta de la abuela</span><span class="ln">y se atreve a cambiarle un ingrediente.</span></p>
+    <p class="st st--c"><span class="ln">El ají amarillo que abraza.</span><span class="ln">El limón que despierta.</span><span class="ln">El wok que humea.</span></p>
+    <p class="st st--r"><span class="ln">Y de pronto suena un vals,</span><span class="ln">alguien levanta la copa</span><span class="ln">y la mesa se vuelve pista.</span></p>
+    <p class="st st--l"><span class="ln">Cinco años. Mil ochocientos veintiséis días.</span><span class="ln">La misma idea de siempre:</span></p>
+    <p class="st st--c st--end"><span class="ln">que la comida se comparte</span><span class="ln">y la fiesta se contagia.</span></p>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section id="carta" class="carta">
+  <!-- Criollo fusión -->
+  <article class="split split--dark">
+    <div class="split-media split-media--art">
+      <img class="art" src="assets/sketch/bandeja-light.png" alt="Ilustración a tinta de un lomo saltado, de la carta de Pachanka" width="837" height="521" loading="lazy" decoding="async" data-parallax="6">
+      <span class="caption">Ilustración de nuestra carta</span>
+    </div>
+    <div class="split-body">
+      <h2 class="title rv">Conoce<br>nuestra carta</h2>
+      <p class="kicker rv">Criollo fusión</p>
+      <p class="lede rv">Recetas de siempre con giros propios: la selva, el chifa y el mar en la misma mesa.</p>
+      <ul class="menu">
+        <li class="rv"><b>Ceviche Pachanka</b> — S/ 33.00<small>Dados de pescado, láminas de pulpo y daditos de palta.</small></li>
+        <li class="rv"><b>Lomo saltado</b> — S/ 37.00<small>Lomo fino al wok, papas amarillas crujientes y arroz con choclo.</small></li>
+        <li class="rv"><b>Arroz cremoso con lomo saltado</b> — S/ 35.00<small>Arroz en crema de ají amarillo y parmesano, con lomo al wok.</small></li>
+        <li class="rv"><b>Chaufa amazónico</b> — S/ 28.00<small>Cecina, chorizo amazónico, plátano y ajicito de cocona.</small></li>
+        <li class="rv"><b>Trío Pachankero</b> — S/ 38.00<small>Arroz cremoso de mariscos, cevichito de la casa y aros de calamar.</small></li>
+      </ul>
+      <p class="fine rv">Fines de semana: arroz con pato, chanchito a la caja china y carapulcra con sopa seca.<br>*Precios en soles.</p>
+    </div>
+  </article>
+
+  <!-- Piqueos -->
+  <article class="split split--light split--rev">
+    <div class="split-media">
+      <img src="assets/img/hamburguesa.jpg" alt="Hamburguesa francesa con queso y papas fritas" width="695" height="914" loading="lazy" decoding="async" data-parallax="8">
+      <span class="caption caption--light">Imagen referencial</span>
+    </div>
+    <div class="split-body">
+      <p class="kicker kicker--accent rv">Para compartir</p>
+      <h2 class="title title--dark rv">Piqueos</h2>
+      <p class="lede rv">Para el partido, el after office o simplemente para que nadie se quede con hambre.</p>
+      <ul class="menu">
+        <li class="rv"><b>Piqueo Pachanka</b> — S/ 38.00<small>Alitas BBQ, papitas, tequeños criollos y maki causas de lomo.</small></li>
+        <li class="rv"><b>Alitas acevichadas</b> — S/ 25.00<small>8 alitas crocantes en salsa acevichada, con papas fritas.</small></li>
+        <li class="rv"><b>Tequeños criollos</b> — S/ 22.00<small>Rellenos de lomo saltado y ají de gallina. 8 unidades.</small></li>
+        <li class="rv"><b>Hamburguesa francesa</b> — S/ 22.00<small>Doble queso edam, champiñones strogonoff, tocino y cebolla caramelizada.</small></li>
+        <li class="rv"><b>Pizza Pachanka</b> — S/ 34.00<small>Jamón ahumado, chorizo, champiñones y cebolla caramelizada.</small></li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Barra -->
+  <article class="split split--dark">
+    <div class="split-media">
+      <img src="assets/img/gin-barra.jpg" alt="Gin tonic en copa sobre la barra iluminada de Pachanka" width="695" height="914" loading="lazy" decoding="async" data-parallax="8">
+      <span class="caption caption--light">Imagen referencial</span>
+    </div>
+    <div class="split-body">
+      <h2 class="title rv">La barra</h2>
+      <p class="kicker rv">After office · 7:00 p.m. a 11:00 p.m.</p>
+      <ul class="menu">
+        <li class="rv"><b>Pachanka Citrius</b> — S/ 19.00<small>Pisco macerado en flor de jamaica, con fresa y frutas cítricas.</small></li>
+        <li class="rv"><b>Pachanka Punch</b> — S/ 19.00<small>Pisco Hualcará macerado en canela, con zumo de piña.</small></li>
+        <li class="rv"><b>Pachanka Pasión</b> — S/ 19.00<small>Ron rubio, naranja y maracuyá, huacatay y un toque de Raymi de trigo.</small></li>
+        <li class="rv"><b>Pisco sour</b> — S/ 19.00<small>Clásico, maracuyá, hoja de coca, flor de Jamaica, eucalipto, maíz morado o canela.</small></li>
+        <li class="rv"><b>Gin tonic</b> — S/ 25.00<small>Bombay, Beefeater o Citadelle.</small></li>
+      </ul>
+      <div class="pills rv">
+        <a class="pill pill--ghost" href="https://drive.google.com/file/d/1F7E4M7DsHpe-9N9UXobochdbsIEUxX5K/view" target="_blank" rel="noopener">Carta completa</a>
+        <a class="pill pill--ghost" href="https://drive.google.com/file/d/1J_K6P6-6OuiJVHi46RFh2uQZzX1E2Spc/view" target="_blank" rel="noopener">Piqueos y bebidas</a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- RESERVAS -->
+<section class="split split--light" id="reservas">
+  <div class="split-body">
+    <h2 class="title title--accent rv">Reservas</h2>
+    <div class="block rv">
+      <h3>Reservaciones</h3>
+      <p>Reserva tu mesa por WhatsApp y te confirmamos al toque. Te recomendamos reservar para viernes, sábados y días de show.</p>
+      <a class="pill" href="https://wa.me/51971969101?text=Hola%20Pachanka%2C%20quisiera%20reservar%20una%20mesa" target="_blank" rel="noopener">Reserva aquí</a>
+    </div>
+    <div class="block rv">
+      <h3>Delivery</h3>
+      <p>Pide tus platos y piqueos favoritos desde casa. Para pedidos grandes o de oficina, escríbenos directo al 971 969 101.</p>
+      <a class="pill" href="https://www.pedidosya.com.pe/restaurantes/lima/pachanka-menu" target="_blank" rel="noopener">Pedir en PedidosYa</a>
+    </div>
+    <div class="spark-mark rv" aria-hidden="true">
+      <svg viewBox="0 0 64 40"><path d="M14 34 6 16" stroke="#D4A25F"/><path d="M32 31V5" stroke="#5B8793"/><path d="M50 34l8-18" stroke="#E0766B"/></svg>
+    </div>
+  </div>
+  <div class="split-media">
+    <img src="assets/img/letrero-copa.jpg" alt="Copa de gin rosado frente al letrero de colores de Pachanka" width="695" height="928" loading="lazy" decoding="async" data-parallax="8">
+    <span class="caption caption--light">Imagen referencial</span>
+  </div>
+</section>
+
+<!-- EVENTOS -->
+<section class="events" id="eventos">
+  <div class="events-head">
+    <h2 class="title title--accent rv">Eventos y celebraciones</h2>
+    <p class="strong rv">¿Planeas un cumpleaños o una reunión?</p>
+    <p class="rv">Música criolla en vivo, noches de latin pop, partidos en pantalla y mesas largas para celebrar. Armamos la reunión contigo: decoración, piqueos para compartir y la barra lista.</p>
+    <p class="strong rv">Escríbenos por WhatsApp con la fecha y el número de personas.</p>
+    <p class="rv">El equipo de Pachanka te ayuda a organizar una celebración para recordar.</p>
+  </div>
+  <div class="gallery">
+    <figure class="rv"><div class="gimg"><img src="assets/img/show-criollo.jpg" alt="Show de música criolla con bailarines de rojo y blanco" width="361" height="640" loading="lazy" decoding="async"></div><figcaption>Noches criollas</figcaption></figure>
+    <figure class="rv"><div class="gimg"><img src="assets/img/cumpleanos.jpg" alt="Cliente celebrando su cumpleaños con globos" width="480" height="440" loading="lazy" decoding="async"></div><figcaption>Cumpleaños</figcaption></figure>
+    <figure class="rv"><div class="gimg"><img src="assets/img/mesa-familia.jpg" alt="Familia compartiendo una mesa larga junto al mural de Machu Picchu" width="360" height="640" loading="lazy" decoding="async"></div><figcaption>Mesas largas</figcaption></figure>
+    <figure class="rv"><div class="gimg"><img src="assets/img/fachada-equipo.jpg" alt="El equipo de Pachanka celebrando su quinto aniversario" width="360" height="640" loading="lazy" decoding="async"></div><figcaption>Aniversarios</figcaption></figure>
+  </div>
+  <div class="events-cta rv">
+    <a class="pill pill--accent" href="https://wa.me/51971969101?text=Hola%20Pachanka%2C%20quisiera%20organizar%20una%20celebraci%C3%B3n" target="_blank" rel="noopener">Organizar mi evento</a>
+  </div>
+</section>
+
+<!-- UBÍCANOS -->
+<section class="split split--light split--map" id="ubicanos">
+  <div class="split-media map">
+    <iframe title="Mapa de ubicación de Pachanka" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=Jr.%20Coronel%20Camilo%20Carrillo%20169%2C%20Jes%C3%BAs%20Mar%C3%ADa%2C%20Lima&z=16&output=embed"></iframe>
+  </div>
+  <div class="split-body">
+    <h2 class="title title--accent rv">Ubícanos</h2>
+    <p class="addr rv">Jr. Coronel Camilo Carrillo 169</p>
+    <p class="addr addr--muted rv">Jesús María – Lima, Perú</p>
+    <div class="pills rv">
+      <a class="pill" href="https://goo.gl/maps/P9reH8M3og4FDtXH8" target="_blank" rel="noopener">Ver en Google Maps</a>
+      <a class="pill" href="https://waze.com/ul?q=Jr.%20Coronel%20Camilo%20Carrillo%20169%20Jes%C3%BAs%20Mar%C3%ADa%20Lima" target="_blank" rel="noopener">Abrir en Waze</a>
+    </div>
+    <div class="hours rv">
+      <h3>Horario de atención</h3>
+      <dl>
+        <dt>Lunes a sábado</dt><dd>12:00 p.m. a 11:00 p.m.</dd>
+        <dt>Domingo</dt><dd>12:00 p.m. a 6:00 p.m.</dd>
+        <dt>After office</dt><dd>7:00 p.m. a 11:00 p.m.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- PIE -->
+<footer class="ftr">
+  <div class="ftr-grid">
+    <a class="ftr-logo" href="#inicio" aria-label="Volver al inicio"><span class="wm" data-wm></span></a>
+    <div class="ftr-col">
+      <h4>Acerca de Pachanka</h4>
+      <a href="#manifiesto">Manifiesto Pachanka</a>
+      <a href="#carta">Nuestra carta</a>
+      <a href="#reservas">Reservas</a>
+      <a href="#eventos">Eventos y celebraciones</a>
+      <a href="#ubicanos">Ubícanos</a>
+    </div>
+    <div class="ftr-col">
+      <h4>Más información</h4>
+      <a href="https://drive.google.com/file/d/1F7E4M7DsHpe-9N9UXobochdbsIEUxX5K/view" target="_blank" rel="noopener">Carta completa (PDF)</a>
+      <a href="https://drive.google.com/file/d/1J_K6P6-6OuiJVHi46RFh2uQZzX1E2Spc/view" target="_blank" rel="noopener">Piqueos y bebidas (PDF)</a>
+      <a href="https://www.pedidosya.com.pe/restaurantes/lima/pachanka-menu" target="_blank" rel="noopener">Delivery en PedidosYa</a>
+      <a href="tel:+51971969101">WhatsApp 971 969 101</a>
+    </div>
+    <div class="ftr-col ftr-social">
+      <div class="social">
+        <a href="https://www.facebook.com/pachanka.restaurant/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.1v3h2.5V21h2.9z"/></svg></a>
+        <a href="https://www.instagram.com/pachanka.restaurant/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM21 8.1c-.1-1.5-.4-2.8-1.5-3.9S17.1 2.8 15.6 2.7c-1.5-.1-6-.1-7.5 0-1.5.1-2.8.4-3.9 1.5S2.8 6.6 2.7 8.1c-.1 1.5-.1 6 0 7.5.1 1.5.4 2.8 1.5 3.9s2.4 1.4 3.9 1.5c1.5.1 6 .1 7.5 0 1.5-.1 2.8-.4 3.9-1.5s1.4-2.4 1.5-3.9c.1-1.5.1-6 0-7.5zM19.1 17.3a3 3 0 0 1-1.7 1.7c-1.2.5-3.9.4-5.4.4s-4.2.1-5.4-.4a3 3 0 0 1-1.7-1.7c-.5-1.2-.4-3.9-.4-5.4s-.1-4.2.4-5.4a3 3 0 0 1 1.7-1.7c1.2-.5 3.9-.4 5.4-.4s4.2-.1 5.4.4a3 3 0 0 1 1.7 1.7c.5 1.2.4 3.9.4 5.4s.1 4.2-.4 5.4z"/></svg></a>
+        <a href="https://wa.me/51971969101" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z"/></svg></a>
+      </div>
+      <a class="pill pill--line" href="https://wa.me/51971969101?text=Hola%20Pachanka%2C%20quisiera%20reservar%20una%20mesa" target="_blank" rel="noopener">Reserva aquí</a>
+    </div>
+  </div>
+  <p class="ftr-bottom">Pachanka Restaurant 2026 · Jr. Coronel Camilo Carrillo 169, Jesús María<br><span>Propuesta de diseño web · Maqueta</span></p>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><path d="M5 15l7-7 7 7" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
