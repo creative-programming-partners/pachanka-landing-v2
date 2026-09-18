@@ -23,8 +23,8 @@
     'mp.note': '*Prices in Peruvian soles (S/).',
     'mp.pdf': 'Download menu (PDF, Spanish)',
 
-    'hero.l1': 'Criollo flavor,',
-    'hero.l2': 'fiesta at heart',
+    'hero.l1': 'Welcome,',
+    'hero.l2': 'to the criollo fiesta',
     'hero.meta': 'Criollo · Fusion &nbsp;—&nbsp; Jesús María, Lima',
     'hero.scroll': 'Scroll to A day at Pachanka',
 
