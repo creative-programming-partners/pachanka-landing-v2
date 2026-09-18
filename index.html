@@ -106,11 +106,17 @@
       </article>
       </div>
       <div class="day-steps" aria-label="Momentos del día">
-        <span class="day-bar" id="dayBar"></span>
-      <button class="day-step is-active" data-step="0" aria-label="Ir a las 12:00">12:00</button>
-      <button class="day-step" data-step="1" aria-label="Ir a las 16:00">16:00</button>
-      <button class="day-step" data-step="2" aria-label="Ir a las 19:00">19:00</button>
-      <button class="day-step" data-step="3" aria-label="Ir a las 21:00">21:00</button>
+        <div class="day-track">
+          <span class="day-bar" id="dayBar"></span>
+          <span class="day-dot is-reached" style="--p:0;--x:0%;--dc:var(--ochre-d)"></span>
+          <span class="day-dot" style="--p:.3333;--x:-50%;--dc:var(--coral-d)"></span>
+          <span class="day-dot" style="--p:.6667;--x:-50%;--dc:var(--teal-d)"></span>
+          <span class="day-dot" style="--p:1;--x:-100%;--dc:var(--brick-d)"></span>
+        </div>
+        <button class="day-step is-active is-reached" style="--p:0;--x:0%" data-step="0" aria-label="Ir a las 12:00">12:00</button>
+        <button class="day-step" style="--p:.3333;--x:-50%" data-step="1" aria-label="Ir a las 16:00">16:00</button>
+        <button class="day-step" style="--p:.6667;--x:-50%" data-step="2" aria-label="Ir a las 19:00">19:00</button>
+        <button class="day-step" style="--p:1;--x:-100%" data-step="3" aria-label="Ir a las 21:00">21:00</button>
       </div>
     </div>
     <div class="day-right" aria-hidden="true">
