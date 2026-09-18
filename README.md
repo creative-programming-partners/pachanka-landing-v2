@@ -6,7 +6,7 @@ Segunda propuesta de diseño web para **Pachanka Restaurant**, cocina criolla co
 
 > Maqueta de presentación para el cliente. Las fotos, la carta y los precios provienen de los canales públicos del restaurante y se usan solo para esta propuesta.
 
-Esta versión toma como referencia la estructura de sitios de restaurantes de autor (como [Maido](https://maido.pe/?lang=es)): portada oscura a pantalla completa, paneles divididos foto / carta y un único color de acento. Los textos, fotos y colores son de Pachanka.
+Esta versión toma como referencia la estructura de sitios de restaurantes de autor (como [Maido](https://maido.pe/?lang=es)): portada oscura a pantalla completa, paneles divididos foto / carta. Los textos, fotos y colores son de Pachanka: carbón y amarillo mostaza de su carta de piqueos, papel kraft de su carta impresa y las letras del logo como acentos.
 
 La primera propuesta está en [pachanka-landing](https://github.com/creative-programming-partners/pachanka-landing).
 

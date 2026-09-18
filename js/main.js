@@ -130,6 +130,7 @@
     if (n === step) return;
     step = n;
     day.style.setProperty('--s', n);
+    day.dataset.step = n;
     moments.forEach((m, i) => m.classList.toggle('is-active', i === n));
     frames.forEach((f, i) => { f.classList.toggle('is-active', i === n); f.classList.toggle('is-past', i < n); });
     stepBtns.forEach((b, i) => b.classList.toggle('is-active', i === n));
