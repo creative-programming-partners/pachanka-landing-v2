@@ -4,12 +4,59 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pachanka Restaurant — Criollo · Fusión en Jesús María</title>
-<meta name="description" content="Pachanka: cocina criolla con fusión, piqueos, barra y música en vivo en Jesús María, Lima. Reserva por WhatsApp.">
-<meta property="og:title" content="Pachanka Restaurant — Criollo · Fusión">
-<meta property="og:description" content="Cocina criolla, piqueos y after office en Jr. Coronel Camilo Carrillo 169, Jesús María.">
-<meta property="og:image" content="assets/img/tragos-barra.jpg">
+<meta name="description" content="Pachanka: cocina criolla con fusión, piqueos, barra y música en vivo en Jesús María, Lima. Reserva tu mesa por WhatsApp.">
+<link rel="canonical" href="https://creative-programming-partners.github.io/pachanka-landing-v2/">
+
+<!-- Vista previa al compartir (WhatsApp, Facebook, X) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pachanka Restaurant">
+<meta property="og:title" content="Pachanka Restaurant — Sabor criollo, alma de fiesta">
+<meta property="og:description" content="Cocina criolla con fusión, piqueos, barra y música en vivo en Jesús María, Lima. Reserva por WhatsApp.">
+<meta property="og:url" content="https://creative-programming-partners.github.io/pachanka-landing-v2/">
+<meta property="og:image" content="https://creative-programming-partners.github.io/pachanka-landing-v2/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo de Pachanka con fotos de sus tragos, alitas y hamburguesa">
+<meta property="og:locale" content="es_PE">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1E1A17">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E1A17'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia' font-size='44' font-weight='700' fill='%23D4A25F'%3EP%3C/text%3E%3C/svg%3E">
+
+<!-- Ficha de restaurante para Google (horario, dirección, carta, reservas) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Pachanka Restaurant",
+  "description": "Cocina criolla con fusión, piqueos, barra y música en vivo en Jesús María, Lima.",
+  "url": "https://creative-programming-partners.github.io/pachanka-landing-v2/",
+  "image": "https://creative-programming-partners.github.io/pachanka-landing-v2/assets/img/og-image.jpg",
+  "telephone": "+51 971 969 101",
+  "priceRange": "S/ 5 – S/ 55",
+  "servesCuisine": ["Peruana", "Criolla", "Fusión"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jr. Coronel Camilo Carrillo 169",
+    "addressLocality": "Jesús María",
+    "addressRegion": "Lima",
+    "postalCode": "15076",
+    "addressCountry": "PE"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": -12.0738088, "longitude": -77.0379397 },
+  "hasMap": "https://maps.google.com/?cid=7583902838810946393",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "12:00", "closes": "23:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "18:00" }
+  ],
+  "acceptsReservations": "https://wa.me/51971969101",
+  "hasMenu": "https://creative-programming-partners.github.io/pachanka-landing-v2/#carta",
+  "sameAs": [
+    "https://www.instagram.com/pachanka.restaurant/",
+    "https://www.facebook.com/pachanka.restaurant/"
+  ]
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,25 +77,50 @@
 <!-- CABECERA -->
 <header class="hdr" id="hdr">
   <div class="hdr-left">
-    <button class="burger" id="burger" aria-label="Abrir menú" aria-controls="drawer" aria-expanded="false"><span></span><span></span><span></span></button>
-    <a class="hdr-logo" href="#inicio" aria-label="Pachanka, inicio"><span class="wm" data-wm></span></a>
+    <button class="burger" id="burger" aria-label="Abrir menú" data-i18n-aria="nav.open" aria-controls="drawer" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a class="hdr-logo" href="#inicio" aria-label="Pachanka, inicio" data-i18n-aria="nav.home"><span class="wm" data-wm></span></a>
   </div>
-  <a class="pill pill--accent" href="https://wa.me/51971969101?text=Hola%20Pachanka%2C%20quisiera%20reservar%20una%20mesa" target="_blank" rel="noopener">Reserva aquí</a>
+  <div class="hdr-right">
+    <span class="status js-status" aria-live="polite"><i class="status-dot"></i><span class="status-text"></span></span>
+    <button class="lang js-lang" id="langBtn" type="button" aria-label="Ver en inglés" data-i18n-aria="lang.switch"><span data-l="es">ES</span><span data-l="en">EN</span></button>
+    <a class="pill pill--accent" href="#reservar" data-i18n="cta.book">Reserva aquí</a>
+  </div>
 </header>
 
 <div class="overlay" id="overlay"></div>
-<nav class="drawer" id="drawer" aria-label="Menú principal" aria-hidden="true">
-  <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">&times;</button>
+<nav class="drawer" id="drawer" aria-label="Menú principal" data-i18n-aria="nav.main" aria-hidden="true">
+  <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú" data-i18n-aria="nav.close">&times;</button>
   <ul>
-    <li><a class="drawer-cta" href="https://wa.me/51971969101?text=Hola%20Pachanka%2C%20quisiera%20reservar%20una%20mesa" target="_blank" rel="noopener">Reserva aquí</a></li>
+    <li><a class="drawer-cta" href="#reservar" data-i18n="cta.book">Reserva aquí</a></li>
+    <li class="drawer-status"><span class="status js-status"><i class="status-dot"></i><span class="status-text"></span></span></li>
+    <li class="drawer-lang"><button class="lang js-lang" type="button" aria-label="Ver en inglés" data-i18n-aria="lang.switch"><span data-l="es">ES</span><span data-l="en">EN</span></button></li>
     <li class="drawer-sep"></li>
-    <li><a href="#un-dia">Un día en Pachanka</a></li>
-    <li><a href="#carta">Nuestra carta</a></li>
-    <li><a href="#reservas">Reservas</a></li>
-    <li><a href="#eventos">Eventos y celebraciones</a></li>
-    <li><a href="#ubicanos">Ubícanos</a></li>
+    <li><a href="#un-dia" data-i18n="nav.day">Un día en Pachanka</a></li>
+    <li><a href="#carta" data-i18n="nav.menu">Nuestra carta</a></li>
+    <li><a href="#carta-completa" data-open-menu data-i18n="nav.fullmenu">Carta completa</a></li>
+    <li><a href="#resenas" data-i18n="nav.reviews">Reseñas</a></li>
+    <li><a href="#reservas" data-i18n="nav.book">Reservas</a></li>
+    <li><a href="#eventos" data-i18n="nav.events">Eventos y celebraciones</a></li>
+    <li><a href="#ubicanos" data-i18n="nav.find">Ubícanos</a></li>
   </ul>
 </nav>
+
+<!-- CARTA COMPLETA (panel lateral) -->
+<aside class="menu-panel" id="menuPanel" role="dialog" aria-modal="true" aria-labelledby="menuPanelTitle" aria-hidden="true">
+  <div class="mp-head">
+    <div>
+      <p class="brush" data-i18n="mp.brush">Nuestra carta</p>
+      <h2 class="mp-title" id="menuPanelTitle" data-i18n="mp.title">Carta completa</h2>
+    </div>
+    <button class="mp-close" id="menuClose" type="button" aria-label="Cerrar carta" data-i18n-aria="mp.close">&times;</button>
+  </div>
+  <div class="mp-tabs" id="mpTabs" role="tablist" aria-label="Categorías de la carta" data-i18n-aria="mp.tabs"></div>
+  <div class="mp-body" id="mpBody" role="tabpanel" tabindex="-1" data-lenis-prevent></div>
+  <div class="mp-foot">
+    <span data-i18n="mp.note">*Precios en soles (S/).</span>
+    <a href="https://drive.google.com/file/d/1F7E4M7DsHpe-9N9UXobochdbsIEUxX5K/view" target="_blank" rel="noopener" data-i18n="mp.pdf">Descargar carta en PDF</a>
+  </div>
+</aside>
 
 <main>
 <!-- PORTADA -->
@@ -65,47 +137,47 @@
     <span class="hero-logo-sub">Restaurant</span>
   </div>
   <div class="hero-copy">
-    <p class="hero-title"><span class="mask"><span>Sabor criollo,</span></span><span class="mask"><span class="hl">alma de fiesta</span></span></p>
-    <p class="hero-meta"><span class="dots" aria-hidden="true"><i style="--c:var(--ochre)"></i><i style="--c:var(--sage)"></i><i style="--c:var(--coral)"></i><i style="--c:var(--teal)"></i></span>Criollo · Fusión &nbsp;—&nbsp; Jesús María, Lima</p>
+    <p class="hero-title"><span class="mask"><span data-i18n="hero.l1">Sabor criollo,</span></span><span class="mask"><span class="hl" data-i18n="hero.l2">alma de fiesta</span></span></p>
+    <p class="hero-meta"><span class="dots" aria-hidden="true"><i style="--c:var(--ochre)"></i><i style="--c:var(--sage)"></i><i style="--c:var(--coral)"></i><i style="--c:var(--teal)"></i></span><span data-i18n="hero.meta">Criollo · Fusión &nbsp;—&nbsp; Jesús María, Lima</span></p>
   </div>
-  <a class="hero-scroll" href="#un-dia" aria-label="Bajar a Un día en Pachanka"><i></i></a>
+  <a class="hero-scroll" href="#un-dia" aria-label="Bajar a Un día en Pachanka" data-i18n-aria="hero.scroll"><i></i></a>
 </section>
 
 <!-- UN DÍA EN PACHANKA -->
 <section class="day" id="un-dia" data-step="0" style="--s:0">
   <div class="day-pin">
     <div class="day-left">
-      <h2 class="day-kicker brush rv">Un día en Pachanka</h2>
+      <h2 class="day-kicker brush rv" data-i18n="nav.day">Un día en Pachanka</h2>
       <div class="clock" aria-hidden="true">
         <span class="reel"><span class="reel-in"><i>1</i><i>1</i><i>1</i><i>2</i></span></span><span class="reel reel--u"><span class="reel-in"><i>2</i><i>6</i><i>9</i><i>1</i></span></span><span class="clock-min">:00</span>
       </div>
       <div class="day-texts">
       <article class="m is-active" data-i="0">
-        <p class="m-kicker">Mediodía · 12:00 p.m.</p>
-        <h3 class="m-title">Almuerzo criollo</h3>
-        <p class="m-text">Abrimos al mediodía y el wok no para: lomo saltado, causas y ceviches para la mesa larga de la familia o del equipo de la oficina.</p>
-        <img class="m-img" src="assets/img/mesa-familia.jpg" alt="Familia compartiendo un almuerzo en una mesa larga de Pachanka" width="360" height="640" loading="lazy" decoding="async">
+        <p class="m-kicker" data-i18n="day.k0">Mediodía · 12:00 p.m.</p>
+        <h3 class="m-title" data-i18n="day.t0">Almuerzo criollo</h3>
+        <p class="m-text" data-i18n="day.p0">Abrimos al mediodía y el wok no para: lomo saltado, causas y ceviches para la mesa larga de la familia o del equipo de la oficina.</p>
+        <img class="m-img" src="assets/img/mesa-familia.jpg" alt="Familia compartiendo un almuerzo en una mesa larga de Pachanka" data-i18n-alt="alt.family" width="360" height="640" loading="lazy" decoding="async">
       </article>
       <article class="m" data-i="1">
-        <p class="m-kicker">Tarde · 4:00 p.m.</p>
-        <h3 class="m-title">Piqueos para compartir</h3>
-        <p class="m-text">Alitas acevichadas, tequeños criollos y salchipapas al centro de la mesa. La sobremesa se alarga sin que nadie mire el reloj.</p>
-        <img class="m-img" src="assets/img/salchipapa.jpg" alt="Salchipapa crocante con chicharrón de pollo" width="728" height="914" loading="lazy" decoding="async">
+        <p class="m-kicker" data-i18n="day.k1">Tarde · 4:00 p.m.</p>
+        <h3 class="m-title" data-i18n="day.t1">Piqueos para compartir</h3>
+        <p class="m-text" data-i18n="day.p1">Alitas acevichadas, tequeños criollos y salchipapas al centro de la mesa. La sobremesa se alarga sin que nadie mire el reloj.</p>
+        <img class="m-img" src="assets/img/salchipapa.jpg" alt="Salchipapa crocante con chicharrón de pollo" data-i18n-alt="alt.salchipapa" width="728" height="914" loading="lazy" decoding="async">
       </article>
       <article class="m" data-i="2">
-        <p class="m-kicker">Noche · 7:00 p.m.</p>
-        <h3 class="m-title">After office</h3>
-        <p class="m-text">Se prende la barra: pisco sour en siete sabores, chilcanos y los cócteles de la casa hasta las once.</p>
-        <img class="m-img" src="assets/img/copa-logo.jpg" alt="Copa de gin frente al logo de Pachanka en la pared" width="726" height="928" loading="lazy" decoding="async">
+        <p class="m-kicker" data-i18n="day.k2">Noche · 7:00 p.m.</p>
+        <h3 class="m-title" data-i18n="day.t2">After office</h3>
+        <p class="m-text" data-i18n="day.p2">Se prende la barra: pisco sour en siete sabores, chilcanos y los cócteles de la casa hasta las once.</p>
+        <img class="m-img" src="assets/img/copa-logo.jpg" alt="Copa de gin frente al logo de Pachanka en la pared" data-i18n-alt="alt.copa" width="726" height="928" loading="lazy" decoding="async">
       </article>
       <article class="m" data-i="3">
-        <p class="m-kicker">Fiesta · 9:00 p.m.</p>
-        <h3 class="m-title">Música en vivo</h3>
-        <p class="m-text">Noches criollas, shows en vivo y partidos en pantalla. En Pachanka la mesa siempre termina siendo pista.</p><small class="m-note">*Según la programación de la semana.</small>
-        <img class="m-img" src="assets/img/show-criollo.jpg" alt="Show de música criolla en vivo con bailarines de rojo y blanco" width="361" height="640" loading="lazy" decoding="async">
+        <p class="m-kicker" data-i18n="day.k3">Fiesta · 9:00 p.m.</p>
+        <h3 class="m-title" data-i18n="day.t3">Música en vivo</h3>
+        <p class="m-text" data-i18n="day.p3">Noches criollas, shows en vivo y partidos en pantalla. En Pachanka la mesa siempre termina siendo pista.</p><small class="m-note" data-i18n="day.note">*Según la programación de la semana.</small>
+        <img class="m-img" src="assets/img/show-criollo.jpg" alt="Show de música criolla en vivo con bailarines de rojo y blanco" data-i18n-alt="alt.show" width="361" height="640" loading="lazy" decoding="async">
       </article>
       </div>
-      <div class="day-steps" aria-label="Momentos del día">
+      <div class="day-steps" aria-label="Momentos del día" data-i18n-aria="day.steps">
         <div class="day-track">
           <span class="day-bar" id="dayBar"></span>
           <span class="day-dot is-reached" style="--p:0;--x:0%;--dc:var(--ochre-d)"></span>
@@ -113,10 +185,10 @@
           <span class="day-dot" style="--p:.6667;--x:-50%;--dc:var(--teal-d)"></span>
           <span class="day-dot" style="--p:1;--x:-100%;--dc:var(--brick-d)"></span>
         </div>
-        <button class="day-step is-active is-reached" style="--p:0;--x:0%" data-step="0" aria-label="Ir a las 12:00">12:00</button>
-        <button class="day-step" style="--p:.3333;--x:-50%" data-step="1" aria-label="Ir a las 16:00">16:00</button>
-        <button class="day-step" style="--p:.6667;--x:-50%" data-step="2" aria-label="Ir a las 19:00">19:00</button>
-        <button class="day-step" style="--p:1;--x:-100%" data-step="3" aria-label="Ir a las 21:00">21:00</button>
+        <button class="day-step is-active is-reached" style="--p:0;--x:0%" data-step="0" aria-label="Ir a las 12:00" data-i18n-aria="day.go0">12:00</button>
+        <button class="day-step" style="--p:.3333;--x:-50%" data-step="1" aria-label="Ir a las 16:00" data-i18n-aria="day.go1">16:00</button>
+        <button class="day-step" style="--p:.6667;--x:-50%" data-step="2" aria-label="Ir a las 19:00" data-i18n-aria="day.go2">19:00</button>
+        <button class="day-step" style="--p:1;--x:-100%" data-step="3" aria-label="Ir a las 21:00" data-i18n-aria="day.go3">21:00</button>
       </div>
     </div>
     <div class="day-right" aria-hidden="true">
@@ -126,7 +198,7 @@
       <div class="fr" style="--z:2"><img src="assets/img/copa-logo.jpg" alt="" width="726" height="928" loading="lazy" decoding="async"></div>
       <div class="fr" style="--z:3"><img src="assets/img/show-criollo.jpg" alt="" width="361" height="640" loading="lazy" decoding="async"></div>
       </div>
-      <span class="day-caption">Imagen referencial</span>
+      <span class="day-caption" data-i18n="cap.ref">Imagen referencial</span>
     </div>
   </div>
 </section>
@@ -136,132 +208,205 @@
   <!-- Criollo fusión -->
   <article class="split split--dark">
     <div class="split-media split-media--art">
-      <img class="art" src="assets/sketch/bandeja-light.png" alt="Ilustración a tinta de un lomo saltado, de la carta de Pachanka" width="837" height="521" loading="lazy" decoding="async" data-parallax="6">
-      <span class="caption">Ilustración de nuestra carta</span>
+      <img class="art" src="assets/sketch/bandeja-light.png" alt="Ilustración a tinta de un lomo saltado, de la carta de Pachanka" data-i18n-alt="alt.sketch" width="837" height="521" loading="lazy" decoding="async" data-parallax="6">
+      <span class="caption" data-i18n="cap.sketch">Ilustración de nuestra carta</span>
     </div>
     <div class="split-body">
-      <p class="brush rv">Criollo fusión</p>
-      <h2 class="title rv">Conoce<br>nuestra carta</h2>
-      <p class="lede rv">Recetas de siempre con giros propios: la selva, el chifa y el mar en la misma mesa.</p>
+      <p class="brush rv" data-i18n="c1.brush">Criollo fusión</p>
+      <h2 class="title rv" data-i18n="c1.title">Conoce<br>nuestra carta</h2>
+      <p class="lede rv" data-i18n="c1.lede">Recetas de siempre con giros propios: la selva, el chifa y el mar en la misma mesa.</p>
       <ul class="menu">
-        <li class="rv"><b>Ceviche Pachanka</b> — <span class="price">S/ 33.00</span><small>Dados de pescado, láminas de pulpo y daditos de palta.</small></li>
-        <li class="rv"><b>Lomo saltado</b> — <span class="price">S/ 37.00</span><small>Lomo fino al wok, papas amarillas crujientes y arroz con choclo.</small></li>
-        <li class="rv"><b>Arroz cremoso con lomo saltado</b> — <span class="price">S/ 35.00</span><small>Arroz en crema de ají amarillo y parmesano, con lomo al wok.</small></li>
-        <li class="rv"><b>Chaufa amazónico</b> — <span class="price">S/ 28.00</span><small>Cecina, chorizo amazónico, plátano y ajicito de cocona.</small></li>
-        <li class="rv"><b>Trío Pachankero</b> — <span class="price">S/ 38.00</span><small>Arroz cremoso de mariscos, cevichito de la casa y aros de calamar.</small></li>
+        <li class="rv"><b>Ceviche Pachanka</b> — <span class="price">S/ 33.00</span><small data-i18n="c1.d1">Dados de pescado, láminas de pulpo y daditos de palta.</small></li>
+        <li class="rv"><b>Lomo saltado</b> — <span class="price">S/ 37.00</span><small data-i18n="c1.d2">Lomo fino al wok, papas amarillas crujientes y arroz con choclo.</small></li>
+        <li class="rv"><b>Arroz cremoso con lomo saltado</b> — <span class="price">S/ 35.00</span><small data-i18n="c1.d3">Arroz en crema de ají amarillo y parmesano, con lomo al wok.</small></li>
+        <li class="rv"><b>Chaufa amazónico</b> — <span class="price">S/ 28.00</span><small data-i18n="c1.d4">Cecina, chorizo amazónico, plátano y ajicito de cocona.</small></li>
+        <li class="rv"><b>Trío Pachankero</b> — <span class="price">S/ 38.00</span><small data-i18n="c1.d5">Arroz cremoso de mariscos, cevichito de la casa y aros de calamar.</small></li>
       </ul>
-      <p class="fine rv">Fines de semana: arroz con pato, chanchito a la caja china y carapulcra con sopa seca.<br>*Precios en soles.</p>
+      <p class="fine rv" data-i18n="c1.fine">Fines de semana: arroz con pato, chanchito a la caja china y carapulcra con sopa seca.<br>*Precios en soles.</p>
+      <div class="pills rv">
+        <a class="pill pill--accent" href="#carta-completa" data-open-menu="entradas" data-i18n="cta.fullmenu">Ver carta completa</a>
+      </div>
     </div>
   </article>
 
   <!-- Piqueos -->
   <article class="split split--light split--rev">
     <div class="split-media">
-      <img src="assets/img/hamburguesa.jpg" alt="Hamburguesa francesa con queso y papas fritas" width="695" height="914" loading="lazy" decoding="async" data-parallax="8">
-      <span class="caption caption--light">Imagen referencial</span>
+      <img src="assets/img/hamburguesa.jpg" alt="Hamburguesa francesa con queso y papas fritas" data-i18n-alt="alt.burger" width="695" height="914" loading="lazy" decoding="async" data-parallax="8">
+      <span class="caption caption--light" data-i18n="cap.ref">Imagen referencial</span>
     </div>
     <div class="split-body">
-      <p class="brush rv">Para compartir</p>
-      <h2 class="title title--dark rv">Piqueos</h2>
-      <p class="lede rv">Para el partido, el after office o simplemente para que nadie se quede con hambre.</p>
+      <p class="brush rv" data-i18n="c2.brush">Para compartir</p>
+      <h2 class="title title--dark rv" data-i18n="c2.title">Piqueos</h2>
+      <p class="lede rv" data-i18n="c2.lede">Para el partido, el after office o simplemente para que nadie se quede con hambre.</p>
       <ul class="menu">
-        <li class="rv"><b>Piqueo Pachanka</b> — <span class="price">S/ 38.00</span><small>Alitas BBQ, papitas, tequeños criollos y maki causas de lomo.</small></li>
-        <li class="rv"><b>Alitas acevichadas</b> — <span class="price">S/ 25.00</span><small>8 alitas crocantes en salsa acevichada, con papas fritas.</small></li>
-        <li class="rv"><b>Tequeños criollos</b> — <span class="price">S/ 22.00</span><small>Rellenos de lomo saltado y ají de gallina. 8 unidades.</small></li>
-        <li class="rv"><b>Hamburguesa francesa</b> — <span class="price">S/ 22.00</span><small>Doble queso edam, champiñones strogonoff, tocino y cebolla caramelizada.</small></li>
-        <li class="rv"><b>Pizza Pachanka</b> — <span class="price">S/ 34.00</span><small>Jamón ahumado, chorizo, champiñones y cebolla caramelizada.</small></li>
+        <li class="rv"><b>Piqueo Pachanka</b> — <span class="price">S/ 38.00</span><small data-i18n="c2.d1">Alitas BBQ, papitas, tequeños criollos y maki causas de lomo.</small></li>
+        <li class="rv"><b>Alitas acevichadas</b> — <span class="price">S/ 25.00</span><small data-i18n="c2.d2">8 alitas crocantes en salsa acevichada, con papas fritas.</small></li>
+        <li class="rv"><b>Tequeños criollos</b> — <span class="price">S/ 22.00</span><small data-i18n="c2.d3">Rellenos de lomo saltado y ají de gallina. 8 unidades.</small></li>
+        <li class="rv"><b>Hamburguesa francesa</b> — <span class="price">S/ 22.00</span><small data-i18n="c2.d4">Doble queso edam, champiñones strogonoff, tocino y cebolla caramelizada.</small></li>
+        <li class="rv"><b>Pizza Pachanka</b> — <span class="price">S/ 34.00</span><small data-i18n="c2.d5">Jamón ahumado, chorizo, champiñones y cebolla caramelizada.</small></li>
       </ul>
+      <div class="pills rv">
+        <a class="pill" href="#carta-completa" data-open-menu="piqueos" data-i18n="cta.allbites">Ver todos los piqueos</a>
+      </div>
     </div>
   </article>
 
   <!-- Barra -->
   <article class="split split--dark">
     <div class="split-media">
-      <img src="assets/img/gin-barra.jpg" alt="Gin tonic en copa sobre la barra iluminada de Pachanka" width="695" height="914" loading="lazy" decoding="async" data-parallax="8">
-      <span class="caption caption--light">Imagen referencial</span>
+      <img src="assets/img/gin-barra.jpg" alt="Gin tonic en copa sobre la barra iluminada de Pachanka" data-i18n-alt="alt.gin" width="695" height="914" loading="lazy" decoding="async" data-parallax="8">
+      <span class="caption caption--light" data-i18n="cap.ref">Imagen referencial</span>
     </div>
     <div class="split-body">
-      <p class="brush rv">After office</p>
-      <h2 class="title rv">La barra</h2>
-      <p class="kicker rv">De 7:00 p.m. a 11:00 p.m.</p>
+      <p class="brush rv" data-i18n="c3.brush">After office</p>
+      <h2 class="title rv" data-i18n="c3.title">La barra</h2>
+      <p class="kicker rv" data-i18n="c3.hours">De 7:00 p.m. a 11:00 p.m.</p>
       <ul class="menu">
-        <li class="rv"><b>Pachanka Citrius</b> — <span class="price">S/ 19.00</span><small>Pisco macerado en flor de jamaica, con fresa y frutas cítricas.</small></li>
-        <li class="rv"><b>Pachanka Punch</b> — <span class="price">S/ 19.00</span><small>Pisco Hualcará macerado en canela, con zumo de piña.</small></li>
-        <li class="rv"><b>Pachanka Pasión</b> — <span class="price">S/ 19.00</span><small>Ron rubio, naranja y maracuyá, huacatay y un toque de Raymi de trigo.</small></li>
-        <li class="rv"><b>Pisco sour</b> — <span class="price">S/ 19.00</span><small>Clásico, maracuyá, hoja de coca, flor de Jamaica, eucalipto, maíz morado o canela.</small></li>
-        <li class="rv"><b>Gin tonic</b> — <span class="price">S/ 25.00</span><small>Bombay, Beefeater o Citadelle.</small></li>
+        <li class="rv"><b>Pachanka Citrius</b> — <span class="price">S/ 19.00</span><small data-i18n="c3.d1">Pisco macerado en flor de jamaica, con fresa y frutas cítricas.</small></li>
+        <li class="rv"><b>Pachanka Punch</b> — <span class="price">S/ 19.00</span><small data-i18n="c3.d2">Pisco Hualcará macerado en canela, con zumo de piña.</small></li>
+        <li class="rv"><b>Pachanka Pasión</b> — <span class="price">S/ 19.00</span><small data-i18n="c3.d3">Ron rubio, naranja y maracuyá, huacatay y un toque de Raymi de trigo.</small></li>
+        <li class="rv"><b>Pisco sour</b> — <span class="price">S/ 19.00</span><small data-i18n="c3.d4">Clásico, maracuyá, hoja de coca, flor de Jamaica, eucalipto, maíz morado o canela.</small></li>
+        <li class="rv"><b>Gin tonic</b> — <span class="price">S/ 25.00</span><small data-i18n="c3.d5">Bombay, Beefeater o Citadelle.</small></li>
       </ul>
       <div class="pills rv">
-        <a class="pill pill--ghost" href="https://drive.google.com/file/d/1F7E4M7DsHpe-9N9UXobochdbsIEUxX5K/view" target="_blank" rel="noopener">Carta completa</a>
-        <a class="pill pill--ghost" href="https://drive.google.com/file/d/1J_K6P6-6OuiJVHi46RFh2uQZzX1E2Spc/view" target="_blank" rel="noopener">Piqueos y bebidas</a>
+        <a class="pill pill--accent" href="#carta-completa" data-open-menu="tragos" data-i18n="cta.bar">Ver todos los tragos</a>
+        <a class="pill pill--ghost" href="https://drive.google.com/file/d/1J_K6P6-6OuiJVHi46RFh2uQZzX1E2Spc/view" target="_blank" rel="noopener" data-i18n="cta.pdf">Carta en PDF</a>
       </div>
     </div>
   </article>
 </section>
 
+<!-- RESEÑAS -->
+<section class="reviews" id="resenas">
+  <div class="reviews-grid">
+    <div class="rev-score">
+      <p class="brush rv" data-i18n="rev.brush">Lo que dicen en Google</p>
+      <div class="rating rv" role="img" aria-label="4,4 de 5 estrellas en Google" data-i18n-aria="rev.aria">
+        <span class="rating-num" data-i18n="rev.num">4,4</span>
+        <span class="stars" aria-hidden="true">
+          <span class="stars-row stars-bg"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+          <span class="stars-row stars-fg" style="--fill:.88"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+        </span>
+      </div>
+      <p class="rating-count rv"><b>287</b> <span data-i18n="rev.count">reseñas en Google Maps</span></p>
+      <div class="pills rv">
+        <a class="pill" href="https://maps.google.com/?cid=7583902838810946393" target="_blank" rel="noopener" data-i18n="rev.cta">Leer las reseñas en Google</a>
+      </div>
+      <p class="rating-date rv" data-i18n="rev.date">Calificación y temas de Google Maps, septiembre de 2026.</p>
+    </div>
+    <div class="rev-side">
+      <figure class="quote rv">
+        <blockquote>“Los cócteles TOP (el pisco sour UNA LOCURA)”</blockquote>
+        <figcaption>Fernando C. · <span data-i18n="rev.source">reseña en Google</span></figcaption>
+      </figure>
+      <div class="topics rv">
+        <p class="topics-title" data-i18n="rev.topics">Lo que más mencionan los clientes</p>
+        <ul>
+          <li style="--c:var(--ochre);--v:1"><span data-i18n="rev.t1">Ambiente</span><i class="tbar"></i><b>19</b></li>
+          <li style="--c:var(--coral);--v:.526"><span data-i18n="rev.t2">Ceviche</span><i class="tbar"></i><b>10</b></li>
+          <li style="--c:var(--teal);--v:.526"><span data-i18n="rev.t3">Sabor</span><i class="tbar"></i><b>10</b></li>
+          <li style="--c:var(--sage);--v:.474"><span data-i18n="rev.t4">Presentación</span><i class="tbar"></i><b>9</b></li>
+        </ul>
+        <p class="topics-note" data-i18n="rev.tnote">Número de reseñas que mencionan cada tema.</p>
+      </div>
+    </div>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="star" d="M12 2.2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.4l-6.1 3.4 1.4-6.8-5.1-4.7 6.9-.8z"/></defs></svg>
+</section>
+
 <!-- RESERVAS -->
 <section class="split split--light split--kraft" id="reservas">
   <div class="split-body">
-    <h2 class="title title--brick rv">Reservas</h2>
-    <div class="block rv" style="--c:var(--coral)">
-      <h3>Reservaciones</h3>
-      <p>Reserva tu mesa por WhatsApp y te confirmamos al toque. Te recomendamos reservar para viernes, sábados y días de show.</p>
-      <a class="pill" href="https://wa.me/51971969101?text=Hola%20Pachanka%2C%20quisiera%20reservar%20una%20mesa" target="_blank" rel="noopener">Reserva aquí</a>
+    <h2 class="title title--brick rv" data-i18n="rs.title">Reservas</h2>
+    <div class="block rv" id="reservar" style="--c:var(--coral)">
+      <h3 data-i18n="rs.h">Reserva tu mesa</h3>
+      <p data-i18n="rs.p">Completa los datos y se abrirá WhatsApp con tu reserva lista para enviar. Te confirmamos por el mismo chat.</p>
+      <form class="rsv" id="rsvForm" novalidate>
+        <div class="rsv-grid">
+          <label class="fld fld--full"><span data-i18n="f.name">Nombre</span>
+            <input name="guest" type="text" autocomplete="name" maxlength="60" required>
+          </label>
+          <label class="fld"><span data-i18n="f.people">Personas</span>
+            <select name="people" required></select>
+          </label>
+          <label class="fld"><span data-i18n="f.date">Fecha</span>
+            <input name="date" type="date" required>
+          </label>
+          <label class="fld"><span data-i18n="f.time">Hora</span>
+            <select name="time" required></select>
+          </label>
+          <label class="fld"><span data-i18n="f.occasion">Ocasión</span>
+            <select name="occasion">
+              <option value="meal" data-i18n="o.meal">Almuerzo o cena</option>
+              <option value="birthday" data-i18n="o.birthday">Cumpleaños</option>
+              <option value="afteroffice" data-i18n="o.afteroffice">After office</option>
+              <option value="work" data-i18n="o.work">Reunión de trabajo</option>
+              <option value="anniversary" data-i18n="o.anniversary">Aniversario</option>
+              <option value="event" data-i18n="o.event">Evento o celebración</option>
+            </select>
+          </label>
+          <label class="fld fld--full"><span data-i18n="f.notes">Comentario (opcional)</span>
+            <textarea name="notes" rows="2" maxlength="200" placeholder="Ej.: mesa cerca de la música, silla para bebé" data-i18n-ph="f.notes.ph"></textarea>
+          </label>
+        </div>
+        <p class="rsv-error" id="rsvError" role="alert" hidden></p>
+        <button class="pill pill--accent rsv-submit" type="submit" data-i18n="f.submit">Enviar reserva por WhatsApp</button>
+        <p class="rsv-ok" id="rsvOk" role="status" hidden data-i18n="f.ok">Listo: envía el mensaje en WhatsApp y te confirmamos la reserva.</p>
+      </form>
     </div>
     <div class="block rv" style="--c:var(--teal)">
-      <h3>Delivery</h3>
-      <p>Pide tus platos y piqueos favoritos desde casa. Para pedidos grandes o de oficina, escríbenos directo al 971 969 101.</p>
-      <a class="pill" href="https://www.pedidosya.com.pe/restaurantes/lima/pachanka-menu" target="_blank" rel="noopener">Pedir en PedidosYa</a>
-    </div>
-    <div class="spark-mark rv" aria-hidden="true">
-      <svg viewBox="0 0 64 40"><path d="M14 34 6 16" stroke="#D4A25F"/><path d="M32 31V5" stroke="#5B8793"/><path d="M50 34l8-18" stroke="#E0766B"/></svg>
+      <h3 data-i18n="rs.dh">Delivery</h3>
+      <p data-i18n="rs.dp">Pide tus platos y piqueos favoritos desde casa. Para pedidos grandes o de oficina, escríbenos directo al 971 969 101.</p>
+      <a class="pill" href="https://www.pedidosya.com.pe/restaurantes/lima/pachanka-menu" target="_blank" rel="noopener" data-i18n="rs.dcta">Pedir en PedidosYa</a>
     </div>
   </div>
   <div class="split-media">
-    <img src="assets/img/letrero-copa.jpg" alt="Copa de gin rosado frente al letrero de colores de Pachanka" width="695" height="928" loading="lazy" decoding="async" data-parallax="8">
-    <span class="caption caption--light">Imagen referencial</span>
+    <img src="assets/img/letrero-copa.jpg" alt="Copa de gin rosado frente al letrero de colores de Pachanka" data-i18n-alt="alt.sign" width="695" height="928" loading="lazy" decoding="async" data-parallax="8">
+    <span class="caption caption--light" data-i18n="cap.ref">Imagen referencial</span>
   </div>
 </section>
 
 <!-- EVENTOS -->
 <section class="events" id="eventos">
   <div class="events-head">
-    <h2 class="title title--teal rv">Eventos y celebraciones</h2>
-    <p class="strong rv">¿Planeas un cumpleaños o una reunión?</p>
-    <p class="rv">Música criolla en vivo, noches de latin pop, partidos en pantalla y mesas largas para celebrar. Armamos la reunión contigo: decoración, piqueos para compartir y la barra lista.</p>
-    <p class="strong rv">Escríbenos por WhatsApp con la fecha y el número de personas.</p>
-    <p class="rv">El equipo de Pachanka te ayuda a organizar una celebración para recordar.</p>
+    <h2 class="title title--teal rv" data-i18n="nav.events">Eventos y celebraciones</h2>
+    <p class="strong rv" data-i18n="ev.q">¿Planeas un cumpleaños o una reunión?</p>
+    <p class="rv" data-i18n="ev.p1">Música criolla en vivo, noches de latin pop, partidos en pantalla y mesas largas para celebrar. Armamos la reunión contigo: decoración, piqueos para compartir y la barra lista.</p>
+    <p class="strong rv" data-i18n="ev.p2">Cuéntanos la fecha y el número de personas.</p>
+    <p class="rv" data-i18n="ev.p3">El equipo de Pachanka te ayuda a organizar una celebración para recordar.</p>
   </div>
   <div class="gallery">
-    <figure class="rv"><div class="gimg"><img src="assets/img/show-criollo.jpg" alt="Show de música criolla con bailarines de rojo y blanco" width="361" height="640" loading="lazy" decoding="async"></div><figcaption>Noches criollas</figcaption></figure>
-    <figure class="rv"><div class="gimg"><img src="assets/img/cumpleanos.jpg" alt="Cliente celebrando su cumpleaños con globos" width="480" height="440" loading="lazy" decoding="async"></div><figcaption>Cumpleaños</figcaption></figure>
-    <figure class="rv"><div class="gimg"><img src="assets/img/mesa-familia.jpg" alt="Familia compartiendo una mesa larga junto al mural de Machu Picchu" width="360" height="640" loading="lazy" decoding="async"></div><figcaption>Mesas largas</figcaption></figure>
-    <figure class="rv"><div class="gimg"><img src="assets/img/fachada-equipo.jpg" alt="El equipo de Pachanka celebrando su quinto aniversario" width="360" height="640" loading="lazy" decoding="async"></div><figcaption>Aniversarios</figcaption></figure>
+    <figure class="rv"><div class="gimg"><img src="assets/img/show-criollo.jpg" alt="Show de música criolla con bailarines de rojo y blanco" data-i18n-alt="alt.show" width="361" height="640" loading="lazy" decoding="async"></div><figcaption data-i18n="ev.g1">Noches criollas</figcaption></figure>
+    <figure class="rv"><div class="gimg"><img src="assets/img/cumpleanos.jpg" alt="Cliente celebrando su cumpleaños con globos" data-i18n-alt="alt.bday" width="480" height="440" loading="lazy" decoding="async"></div><figcaption data-i18n="ev.g2">Cumpleaños</figcaption></figure>
+    <figure class="rv"><div class="gimg"><img src="assets/img/mesa-familia.jpg" alt="Familia compartiendo una mesa larga junto al mural de Machu Picchu" data-i18n-alt="alt.family2" width="360" height="640" loading="lazy" decoding="async"></div><figcaption data-i18n="ev.g3">Mesas largas</figcaption></figure>
+    <figure class="rv"><div class="gimg"><img src="assets/img/fachada-equipo.jpg" alt="El equipo de Pachanka celebrando su quinto aniversario" data-i18n-alt="alt.team" width="360" height="640" loading="lazy" decoding="async"></div><figcaption data-i18n="ev.g4">Aniversarios</figcaption></figure>
   </div>
   <div class="events-cta rv">
-    <a class="pill pill--accent" href="https://wa.me/51971969101?text=Hola%20Pachanka%2C%20quisiera%20organizar%20una%20celebraci%C3%B3n" target="_blank" rel="noopener">Organizar mi evento</a>
+    <a class="pill pill--accent" href="#reservar" data-occasion="event" data-i18n="ev.cta">Organizar mi evento</a>
   </div>
 </section>
 
 <!-- UBÍCANOS -->
 <section class="split split--light split--kraft split--map" id="ubicanos">
   <div class="split-media map">
-    <iframe title="Mapa de ubicación de Pachanka" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=Jr.%20Coronel%20Camilo%20Carrillo%20169%2C%20Jes%C3%BAs%20Mar%C3%ADa%2C%20Lima&z=16&output=embed"></iframe>
+    <iframe title="Mapa de ubicación de Pachanka" data-i18n-title="map.title" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=Jr.%20Coronel%20Camilo%20Carrillo%20169%2C%20Jes%C3%BAs%20Mar%C3%ADa%2C%20Lima&z=16&output=embed"></iframe>
   </div>
   <div class="split-body">
-    <h2 class="title title--ochre rv">Ubícanos</h2>
+    <h2 class="title title--ochre rv" data-i18n="nav.find">Ubícanos</h2>
     <p class="addr rv">Jr. Coronel Camilo Carrillo 169</p>
-    <p class="addr addr--muted rv">Jesús María – Lima, Perú</p>
+    <p class="addr addr--muted rv" data-i18n="loc.city">Jesús María – Lima, Perú</p>
+    <p class="status status--inline js-status rv"><i class="status-dot"></i><span class="status-text"></span></p>
     <div class="pills rv">
-      <a class="pill" href="https://goo.gl/maps/P9reH8M3og4FDtXH8" target="_blank" rel="noopener">Ver en Google Maps</a>
-      <a class="pill" href="https://waze.com/ul?q=Jr.%20Coronel%20Camilo%20Carrillo%20169%20Jes%C3%BAs%20Mar%C3%ADa%20Lima" target="_blank" rel="noopener">Abrir en Waze</a>
+      <a class="pill" href="https://maps.google.com/?cid=7583902838810946393" target="_blank" rel="noopener" data-i18n="loc.maps">Ver en Google Maps</a>
+      <a class="pill" href="https://waze.com/ul?ll=-12.0738088%2C-77.0379397&navigate=yes" target="_blank" rel="noopener" data-i18n="loc.waze">Abrir en Waze</a>
     </div>
     <div class="hours rv">
-      <h3>Horario de atención</h3>
-      <dl>
-        <dt>Lunes a sábado</dt><dd>12:00 p.m. a 11:00 p.m.</dd>
-        <dt>Domingo</dt><dd>12:00 p.m. a 6:00 p.m.</dd>
-        <dt>After office</dt><dd>7:00 p.m. a 11:00 p.m.</dd>
+      <h3 data-i18n="loc.hours">Horario de atención</h3>
+      <dl id="hoursList">
+        <div class="hrow" data-days="1,2,3,4,5,6"><dt data-i18n="loc.monsat">Lunes a sábado</dt><dd data-i18n="loc.monsat.h">12:00 p.m. a 11:00 p.m.</dd></div>
+        <div class="hrow" data-days="0"><dt data-i18n="loc.sun">Domingo</dt><dd data-i18n="loc.sun.h">12:00 p.m. a 6:00 p.m.</dd></div>
+        <div class="hrow"><dt>After office</dt><dd data-i18n="loc.ao.h">7:00 p.m. a 11:00 p.m.</dd></div>
       </dl>
     </div>
   </div>
@@ -271,21 +416,23 @@
 <!-- PIE -->
 <footer class="ftr">
   <div class="ftr-grid">
-    <a class="ftr-logo" href="#inicio" aria-label="Volver al inicio"><span class="wm" data-wm></span></a>
+    <a class="ftr-logo" href="#inicio" aria-label="Volver al inicio" data-i18n-aria="ftr.home"><span class="wm" data-wm></span></a>
     <div class="ftr-col">
-      <h4>Acerca de Pachanka</h4>
-      <a href="#un-dia">Un día en Pachanka</a>
-      <a href="#carta">Nuestra carta</a>
-      <a href="#reservas">Reservas</a>
-      <a href="#eventos">Eventos y celebraciones</a>
-      <a href="#ubicanos">Ubícanos</a>
+      <h4 data-i18n="ftr.about">Acerca de Pachanka</h4>
+      <a href="#un-dia" data-i18n="nav.day">Un día en Pachanka</a>
+      <a href="#carta" data-i18n="nav.menu">Nuestra carta</a>
+      <a href="#resenas" data-i18n="nav.reviews">Reseñas</a>
+      <a href="#reservas" data-i18n="nav.book">Reservas</a>
+      <a href="#eventos" data-i18n="nav.events">Eventos y celebraciones</a>
+      <a href="#ubicanos" data-i18n="nav.find">Ubícanos</a>
     </div>
     <div class="ftr-col">
-      <h4>Más información</h4>
-      <a href="https://drive.google.com/file/d/1F7E4M7DsHpe-9N9UXobochdbsIEUxX5K/view" target="_blank" rel="noopener">Carta completa (PDF)</a>
-      <a href="https://drive.google.com/file/d/1J_K6P6-6OuiJVHi46RFh2uQZzX1E2Spc/view" target="_blank" rel="noopener">Piqueos y bebidas (PDF)</a>
-      <a href="https://www.pedidosya.com.pe/restaurantes/lima/pachanka-menu" target="_blank" rel="noopener">Delivery en PedidosYa</a>
-      <a href="tel:+51971969101">WhatsApp 971 969 101</a>
+      <h4 data-i18n="ftr.more">Más información</h4>
+      <a href="#carta-completa" data-open-menu data-i18n="nav.fullmenu">Carta completa</a>
+      <a href="https://drive.google.com/file/d/1F7E4M7DsHpe-9N9UXobochdbsIEUxX5K/view" target="_blank" rel="noopener" data-i18n="ftr.pdf1">Carta en PDF</a>
+      <a href="https://drive.google.com/file/d/1J_K6P6-6OuiJVHi46RFh2uQZzX1E2Spc/view" target="_blank" rel="noopener" data-i18n="ftr.pdf2">Piqueos y bebidas (PDF)</a>
+      <a href="https://www.pedidosya.com.pe/restaurantes/lima/pachanka-menu" target="_blank" rel="noopener" data-i18n="ftr.delivery">Delivery en PedidosYa</a>
+      <a href="https://wa.me/51971969101" target="_blank" rel="noopener">WhatsApp 971 969 101</a>
     </div>
     <div class="ftr-col ftr-social">
       <div class="social">
@@ -293,17 +440,19 @@
         <a href="https://www.instagram.com/pachanka.restaurant/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM21 8.1c-.1-1.5-.4-2.8-1.5-3.9S17.1 2.8 15.6 2.7c-1.5-.1-6-.1-7.5 0-1.5.1-2.8.4-3.9 1.5S2.8 6.6 2.7 8.1c-.1 1.5-.1 6 0 7.5.1 1.5.4 2.8 1.5 3.9s2.4 1.4 3.9 1.5c1.5.1 6 .1 7.5 0 1.5-.1 2.8-.4 3.9-1.5s1.4-2.4 1.5-3.9c.1-1.5.1-6 0-7.5zM19.1 17.3a3 3 0 0 1-1.7 1.7c-1.2.5-3.9.4-5.4.4s-4.2.1-5.4-.4a3 3 0 0 1-1.7-1.7c-.5-1.2-.4-3.9-.4-5.4s-.1-4.2.4-5.4a3 3 0 0 1 1.7-1.7c1.2-.5 3.9-.4 5.4-.4s4.2-.1 5.4.4a3 3 0 0 1 1.7 1.7c.5 1.2.4 3.9.4 5.4s.1 4.2-.4 5.4z"/></svg></a>
         <a href="https://wa.me/51971969101" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z"/></svg></a>
       </div>
-      <a class="pill pill--line" href="https://wa.me/51971969101?text=Hola%20Pachanka%2C%20quisiera%20reservar%20una%20mesa" target="_blank" rel="noopener">Reserva aquí</a>
+      <a class="pill pill--line" href="#reservar" data-i18n="cta.book">Reserva aquí</a>
     </div>
   </div>
-  <p class="ftr-bottom">Pachanka Restaurant 2026 · Jr. Coronel Camilo Carrillo 169, Jesús María<br><span>Propuesta de diseño web · Maqueta</span></p>
+  <p class="ftr-bottom">Pachanka Restaurant 2026 · Jr. Coronel Camilo Carrillo 169, Jesús María<br><span data-i18n="ftr.proposal">Propuesta de diseño web · Maqueta</span></p>
 </footer>
 
-<button class="to-top" id="toTop" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><path d="M5 15l7-7 7 7" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<button class="to-top" id="toTop" aria-label="Volver arriba" data-i18n-aria="ftr.top"><svg viewBox="0 0 24 24"><path d="M5 15l7-7 7 7" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/menu-data.js"></script>
+<script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

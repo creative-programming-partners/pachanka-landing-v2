@@ -1,0 +1,211 @@
+/* Traducciones. El español vive en el HTML; aquí está el inglés.
+   Marcas en el HTML: data-i18n (contenido), data-i18n-aria, data-i18n-alt, data-i18n-ph (placeholder), data-i18n-title. */
+(function () {
+  const EN = {
+    'nav.open': 'Open menu',
+    'nav.home': 'Pachanka, home',
+    'nav.main': 'Main menu',
+    'nav.close': 'Close menu',
+    'lang.switch': 'Ver en español',
+    'cta.book': 'Book a table',
+    'nav.day': 'A day at Pachanka',
+    'nav.menu': 'Our menu',
+    'nav.fullmenu': 'Full menu',
+    'nav.reviews': 'Reviews',
+    'nav.book': 'Reservations',
+    'nav.events': 'Events & celebrations',
+    'nav.find': 'Find us',
+
+    'mp.brush': 'Our menu',
+    'mp.title': 'Full menu',
+    'mp.close': 'Close menu',
+    'mp.tabs': 'Menu categories',
+    'mp.note': '*Prices in Peruvian soles (S/).',
+    'mp.pdf': 'Download menu (PDF, Spanish)',
+
+    'hero.l1': 'Criollo flavor,',
+    'hero.l2': 'fiesta at heart',
+    'hero.meta': 'Criollo · Fusion &nbsp;—&nbsp; Jesús María, Lima',
+    'hero.scroll': 'Scroll to A day at Pachanka',
+
+    'day.k0': 'Noon · 12:00 p.m.',
+    'day.t0': 'Criollo lunch',
+    'day.p0': 'We open at noon and the wok never stops: lomo saltado, causas and ceviches for the long family table or the office crew.',
+    'day.k1': 'Afternoon · 4:00 p.m.',
+    'day.t1': 'Bites to share',
+    'day.p1': 'Ceviche-style wings, criollo tequeños and salchipapas in the middle of the table. The afternoon stretches on and nobody checks the clock.',
+    'day.k2': 'Evening · 7:00 p.m.',
+    'day.t2': 'After office',
+    'day.p2': 'The bar lights up: pisco sour in seven flavors, chilcanos and house cocktails until eleven.',
+    'day.k3': 'Fiesta · 9:00 p.m.',
+    'day.t3': 'Live music',
+    'day.p3': 'Criollo nights, live shows and games on screen. At Pachanka the table always ends up as a dance floor.',
+    'day.note': '*Depending on the weekly lineup.',
+    'day.steps': 'Moments of the day',
+    'day.go0': 'Go to 12:00', 'day.go1': 'Go to 16:00', 'day.go2': 'Go to 19:00', 'day.go3': 'Go to 21:00',
+    'cap.ref': 'Reference image',
+    'cap.sketch': 'Illustration from our menu',
+
+    'alt.family': 'Family sharing lunch at a long table in Pachanka',
+    'alt.salchipapa': 'Crispy salchipapa with chicken bites',
+    'alt.copa': 'Gin glass in front of the Pachanka logo on the wall',
+    'alt.show': 'Live criollo music show with dancers in red and white',
+    'alt.sketch': 'Ink illustration of lomo saltado from the Pachanka menu',
+    'alt.burger': 'Burger with cheese and fries',
+    'alt.gin': 'Gin and tonic on the lit bar at Pachanka',
+    'alt.sign': 'Pink gin glass in front of the colorful Pachanka sign',
+    'alt.bday': 'Guest celebrating a birthday with balloons',
+    'alt.family2': 'Family sharing a long table by the Machu Picchu mural',
+    'alt.team': 'The Pachanka team celebrating its fifth anniversary',
+
+    'c1.brush': 'Criollo fusion',
+    'c1.title': 'Discover<br>our menu',
+    'c1.lede': 'Classic recipes with our own twist: the Amazon, Chinese-Peruvian chifa and the sea at the same table.',
+    'c1.d1': 'Diced fish, thin octopus slices and avocado.',
+    'c1.d2': 'Wok-tossed beef tenderloin, crispy yellow potatoes and corn rice.',
+    'c1.d3': 'Creamy ají amarillo and parmesan rice with wok-tossed beef.',
+    'c1.d4': 'Amazonian cured pork and sausage, plantain and cocona chili.',
+    'c1.d5': 'Creamy seafood rice, house ceviche and calamari rings.',
+    'c1.fine': 'Weekends: arroz con pato, crispy pork caja china and carapulcra with sopa seca.<br>*Prices in soles.',
+    'cta.fullmenu': 'See full menu',
+    'c2.brush': 'To share',
+    'c2.title': 'Bar bites',
+    'c2.lede': 'For the game, the after office or simply so nobody goes hungry.',
+    'c2.d1': 'BBQ wings, fries, criollo tequeños and beef causa maki.',
+    'c2.d2': '8 crispy wings in ceviche sauce, with fries.',
+    'c2.d3': 'Filled with lomo saltado and ají de gallina. 8 pieces.',
+    'c2.d4': 'Double edam, mushroom stroganoff, bacon and caramelized onion.',
+    'c2.d5': 'Smoked ham, chorizo, mushrooms and caramelized onion.',
+    'cta.allbites': 'See all bar bites',
+    'c3.brush': 'After office',
+    'c3.title': 'The bar',
+    'c3.hours': 'From 7:00 p.m. to 11:00 p.m.',
+    'c3.d1': 'Hibiscus-infused pisco with strawberry and citrus.',
+    'c3.d2': 'Cinnamon-infused Hualcará pisco with pineapple juice.',
+    'c3.d3': 'Golden rum, orange and passion fruit, huacatay and a dash of Raymi wheat beer.',
+    'c3.d4': 'Classic, passion fruit, coca leaf, hibiscus, eucalyptus, purple corn or cinnamon.',
+    'c3.d5': 'Bombay, Beefeater or Citadelle.',
+    'cta.bar': 'See all drinks',
+    'cta.pdf': 'Menu PDF',
+
+    'rev.brush': 'What Google says',
+    'rev.aria': '4.4 out of 5 stars on Google',
+    'rev.num': '4.4',
+    'rev.count': 'reviews on Google Maps',
+    'rev.cta': 'Read the reviews on Google',
+    'rev.date': 'Google Maps rating and topics, September 2026.',
+    'rev.source': 'Google review (in Spanish)',
+    'rev.topics': 'What guests mention most',
+    'rev.t1': 'Atmosphere', 'rev.t2': 'Ceviche', 'rev.t3': 'Flavor', 'rev.t4': 'Presentation',
+    'rev.tnote': 'Number of reviews mentioning each topic.',
+
+    'rs.title': 'Reservations',
+    'rs.h': 'Book your table',
+    'rs.p': 'Fill in the details and WhatsApp will open with your booking ready to send. We confirm in the same chat.',
+    'f.name': 'Name',
+    'f.people': 'Guests',
+    'f.date': 'Date',
+    'f.time': 'Time',
+    'f.occasion': 'Occasion',
+    'o.meal': 'Lunch or dinner',
+    'o.birthday': 'Birthday',
+    'o.afteroffice': 'After office',
+    'o.work': 'Business meeting',
+    'o.anniversary': 'Anniversary',
+    'o.event': 'Event or celebration',
+    'f.notes': 'Comments (optional)',
+    'f.notes.ph': 'E.g. table near the music, high chair',
+    'f.submit': 'Send booking via WhatsApp',
+    'f.ok': 'Done: send the message on WhatsApp and we will confirm your booking.',
+    'rs.dh': 'Delivery',
+    'rs.dp': 'Order your favorite dishes and bar bites at home. For large or office orders, message us at 971 969 101.',
+    'rs.dcta': 'Order on PedidosYa',
+
+    'ev.q': 'Planning a birthday or a get-together?',
+    'ev.p1': 'Live criollo music, latin pop nights, games on screen and long tables to celebrate. We plan it with you: decorations, bites to share and the bar ready.',
+    'ev.p2': 'Tell us the date and the number of guests.',
+    'ev.p3': 'The Pachanka team will help you plan a celebration to remember.',
+    'ev.g1': 'Criollo nights', 'ev.g2': 'Birthdays', 'ev.g3': 'Long tables', 'ev.g4': 'Anniversaries',
+    'ev.cta': 'Plan my event',
+
+    'map.title': 'Map showing Pachanka location',
+    'loc.city': 'Jesús María – Lima, Peru',
+    'loc.maps': 'View on Google Maps',
+    'loc.waze': 'Open in Waze',
+    'loc.hours': 'Opening hours',
+    'loc.monsat': 'Monday to Saturday',
+    'loc.monsat.h': '12:00 p.m. to 11:00 p.m.',
+    'loc.sun': 'Sunday',
+    'loc.sun.h': '12:00 p.m. to 6:00 p.m.',
+    'loc.ao.h': '7:00 p.m. to 11:00 p.m.',
+
+    'ftr.home': 'Back to top',
+    'ftr.about': 'About Pachanka',
+    'ftr.more': 'More information',
+    'ftr.pdf1': 'Menu PDF (Spanish)',
+    'ftr.pdf2': 'Bar bites & drinks PDF (Spanish)',
+    'ftr.delivery': 'Delivery on PedidosYa',
+    'ftr.proposal': 'Web design proposal · Mockup',
+    'ftr.top': 'Back to top'
+  };
+
+  /* Textos que arma el JavaScript (estado de apertura, formulario, mensaje de WhatsApp) */
+  const JS = {
+    es: {
+      title: 'Pachanka Restaurant — Criollo · Fusión en Jesús María',
+      desc: 'Pachanka: cocina criolla con fusión, piqueos, barra y música en vivo en Jesús María, Lima. Reserva tu mesa por WhatsApp.',
+      openNow: 'Abierto ahora', until: 'hasta las', closed: 'Cerrado', opensToday: 'abre hoy a las', opensTomorrow: 'abre mañana a las',
+      closingSoon: 'Cierra pronto', closesAt: 'cierra a las',
+      people: n => n === '10+' ? 'Más de 10' : n + (n === '1' ? ' persona' : ' personas'),
+      pickTime: 'Elige una hora', noTimes: 'Sin horarios disponibles',
+      errName: 'Escribe tu nombre.', errDate: 'Elige una fecha desde hoy.', errTime: 'Elige una hora disponible.',
+      msgHello: 'Hola Pachanka, quisiera reservar una mesa:',
+      msgName: 'Nombre', msgPeople: 'Personas', msgDate: 'Fecha', msgTime: 'Hora', msgOcc: 'Ocasión', msgNotes: 'Comentario', msgThanks: '¡Gracias!',
+      locale: 'es-PE'
+    },
+    en: {
+      title: 'Pachanka Restaurant — Criollo · Fusion in Jesús María, Lima',
+      desc: 'Pachanka: criollo cuisine with a fusion twist, bar bites, cocktails and live music in Jesús María, Lima. Book your table via WhatsApp.',
+      openNow: 'Open now', until: 'until', closed: 'Closed', opensToday: 'opens today at', opensTomorrow: 'opens tomorrow at',
+      closingSoon: 'Closing soon', closesAt: 'closes at',
+      people: n => n === '10+' ? 'More than 10' : n + (n === '1' ? ' guest' : ' guests'),
+      pickTime: 'Choose a time', noTimes: 'No times available',
+      errName: 'Please enter your name.', errDate: 'Choose a date from today on.', errTime: 'Choose an available time.',
+      msgHello: 'Hi Pachanka, I would like to book a table:',
+      msgName: 'Name', msgPeople: 'Guests', msgDate: 'Date', msgTime: 'Time', msgOcc: 'Occasion', msgNotes: 'Comments', msgThanks: 'Thank you!',
+      locale: 'en-US'
+    }
+  };
+
+  const originals = new Map();
+  function keep(el, prop, value) {
+    if (!originals.has(el)) originals.set(el, {});
+    const o = originals.get(el);
+    if (!(prop in o)) o[prop] = value;
+    return o[prop];
+  }
+  const ATTRS = [['i18nAria', 'aria-label'], ['i18nAlt', 'alt'], ['i18nPh', 'placeholder'], ['i18nTitle', 'title']];
+
+  function apply(lang) {
+    const en = lang === 'en';
+    document.documentElement.lang = en ? 'en' : 'es';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const es = keep(el, 'html', el.innerHTML);
+      const v = en ? EN[el.dataset.i18n] : es;
+      if (v !== undefined && el.innerHTML !== v) el.innerHTML = v;
+    });
+    ATTRS.forEach(([ds, attr]) => {
+      document.querySelectorAll('[data-' + ds.replace(/[A-Z]/g, c => '-' + c.toLowerCase()) + ']').forEach(el => {
+        const es = keep(el, attr, el.getAttribute(attr));
+        const v = en ? EN[el.dataset[ds]] : es;
+        if (v !== undefined && v !== null) el.setAttribute(attr, v);
+      });
+    });
+    const t = JS[en ? 'en' : 'es'];
+    document.title = t.title;
+    const d = document.querySelector('meta[name="description"]');
+    if (d) d.setAttribute('content', t.desc);
+  }
+
+  window.PK_I18N = { EN, JS, apply };
+})();

@@ -16,19 +16,30 @@ La primera propuesta está en [pachanka-landing](https://github.com/creative-pro
 - Portada con tres fotos a pantalla completa
 - Un día en Pachanka: la sección se fija al hacer scroll y recorre el día por horas (almuerzo, piqueos, after office y música en vivo)
 - Carta en paneles: criollo fusión, piqueos y la barra
-- Reservas y delivery
+- Carta completa en un panel lateral, con las 10 categorías de sus cartas en PDF
+- Reseñas: calificación y temas reales de Google Maps
+- Reservas con formulario que abre WhatsApp con el mensaje listo
 - Eventos y celebraciones
 - Ubicación con mapa y horarios
+
+## Funciones
+
+- **Abierto ahora / Cerrado** según la hora de Lima (lunes a sábado 12–23 h, domingo 12–18 h)
+- **Formulario de reserva**: solo ofrece horarios válidos para el día elegido y arma el mensaje de WhatsApp
+- **Español / inglés**, con la preferencia guardada en el navegador
+- **Ficha para Google** (datos estructurados de restaurante) e imagen para compartir en redes
 
 ## Estructura
 
 ```
-index.html        Página
-css/styles.css    Estilos
-js/intro.js       Pantalla de carga
-js/main.js        Menú lateral, scroll suave, animaciones y mapa
-assets/img/       Fotos
-assets/sketch/    Ilustraciones a tinta de la carta
+index.html          Página
+css/styles.css      Estilos
+js/intro.js         Pantalla de carga
+js/menu-data.js     Carta completa (español e inglés)
+js/i18n.js          Traducciones al inglés
+js/main.js          Menú, carta, reservas, estado de apertura, idioma y animaciones
+assets/img/         Fotos e imagen para compartir (og-image.jpg)
+assets/sketch/      Ilustraciones a tinta de la carta
 ```
 
 ## Tecnología
