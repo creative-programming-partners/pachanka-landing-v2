@@ -1,7 +1,7 @@
 /* =========================================================
    PACHANKA — edición editorial
    Estructura inspirada en restaurantes de autor: portada a pantalla completa,
-   manifiesto tipográfico y paneles divididos foto / carta.
+   un día en el restaurante por horas y paneles divididos foto / carta.
    ========================================================= */
 :root{
   --black:#0B0A09;
@@ -151,23 +151,56 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .js .rv.is-in{opacity:1;transform:none}
 
 /* =========================================================
-   MANIFIESTO
+   UN DÍA EN PACHANKA
+   En escritorio la sección se fija y avanza por 4 momentos del día.
+   Todo cambio de estado es transform/opacity (se compone en GPU).
    ========================================================= */
-.strip{position:relative;height:clamp(170px,21vw,260px);overflow:hidden;background:#000;color:#fff}
-.strip-media{position:absolute;left:0;right:0;top:-14%;bottom:-14%;display:grid;grid-template-columns:repeat(4,1fr);will-change:transform}
-.strip-media img{width:100%;height:100%;object-fit:cover}
-.strip::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,7,6,.82),rgba(8,7,6,.5))}
-.strip-title{position:absolute;z-index:1;left:var(--side);bottom:clamp(22px,3vw,34px);margin:0;font-size:clamp(30px,3.4vw,50px);font-weight:400;line-height:1.02;text-transform:uppercase}
+.day{position:relative;background:var(--paper) url("../assets/img/grain.png");color:var(--ink)}
+.day-pin{height:100svh;min-height:640px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.day-left{display:flex;flex-direction:column;justify-content:space-between;padding:clamp(100px,14vh,140px) var(--side) clamp(40px,7vh,72px)}
+.day-kicker{margin:0;display:flex;align-items:center;gap:14px;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.day-kicker::after{content:"";width:56px;height:1px;background:currentColor;opacity:.5}
 
-.poem{max-width:880px;margin:0 auto;padding:clamp(80px,11vw,150px) 24px clamp(90px,12vw,170px)}
-.st{display:flex;flex-direction:column;margin:0 0 clamp(26px,3.4vw,42px);font-size:clamp(13px,1.05vw,15.5px);line-height:1.9;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
-.st--l{align-items:flex-start;text-align:left}
-.st--r{align-items:flex-end;text-align:right}
-.st--c{align-items:center;text-align:center}
-.st--end{color:var(--accent);font-weight:500;margin-top:clamp(40px,5vw,64px)}
-.ln{display:block}
-.js .ln{opacity:0;transform:translate3d(0,14px,0)}
-.st.is-in .ln{opacity:1;transform:none;transition:opacity .9s var(--ease-out), transform 1s var(--ease-out);transition-delay:calc(var(--i,0) * 110ms)}
+/* Reloj: cada dígito es un rodillo que gira al cambiar de momento */
+.clock{display:flex;align-items:flex-start;font-size:clamp(96px,11.5vw,184px);font-weight:300;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin:clamp(18px,3vh,34px) 0 clamp(10px,2vh,22px)}
+.reel{display:inline-block;height:1em;overflow:hidden}
+.reel-in{display:flex;flex-direction:column;transform:translate3d(0,calc(var(--s) * -1em),0);transition:transform .95s var(--ease-io);will-change:transform}
+.reel--u .reel-in{transition-delay:.07s}
+.reel i{display:block;height:1em;font-style:normal}
+.clock-min{color:var(--muted);opacity:.55}
+
+.day-texts{position:relative;min-height:clamp(170px,24vh,220px);max-width:460px}
+.m{position:absolute;left:0;right:0;top:0;opacity:0;transform:translate3d(0,18px,0);pointer-events:none;transition:opacity .3s ease, transform .45s var(--ease-out)}
+.m.is-active{opacity:1;transform:none;pointer-events:auto;transition:opacity .7s var(--ease-out) .2s, transform .9s var(--ease-out) .2s}
+.m-kicker{margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.m-title{margin:0 0 12px;font-size:clamp(26px,2.4vw,36px);font-weight:400;line-height:1.08;text-transform:uppercase}
+.m-text{margin:0;font-size:16px;line-height:1.65;color:var(--ink-2)}
+.m-note{display:block;margin-top:10px;font-size:12px;color:var(--muted)}
+.m-img{display:none}
+
+.day-steps{position:relative;display:flex;gap:clamp(18px,2.4vw,34px);padding-top:18px;border-top:1px solid rgba(22,20,18,.14);max-width:460px}
+.day-bar{position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;will-change:transform}
+.day-step{font-size:13px;font-weight:500;letter-spacing:.1em;color:var(--muted);padding:4px 0;transition:color .25s ease}
+.day-step:hover{color:var(--ink)}
+.day-step.is-active{color:var(--accent)}
+
+.day-right{position:relative;display:grid;place-items:center;padding:clamp(90px,12vh,120px) var(--side) clamp(40px,7vh,72px)}
+.frames{position:relative;width:min(34vw,470px);height:min(70vh,620px);overflow:hidden;background:#E3DFD9}
+.fr{position:absolute;inset:0;z-index:var(--z);transform:translate3d(0,101%,0);transition:transform 1.05s var(--ease-io);will-change:transform}
+.fr.is-past{transform:translate3d(0,-24%,0)}
+.fr.is-active{transform:none}
+.fr img{width:100%;height:100%;object-fit:cover;transform:scale(1.16);transition:transform 1.5s var(--ease-out)}
+.fr.is-active img{transform:none}
+.day-caption{position:absolute;right:var(--side);bottom:clamp(20px,4vh,40px);font-size:11px;color:var(--muted)}
+
+/* Sin pin (celular, movimiento reducido o sin GSAP): los 4 momentos en lista */
+.day--static .day-pin{height:auto;min-height:0;display:block;padding:clamp(80px,11vw,130px) var(--side)}
+.day--static .day-left{padding:0;display:block}
+.day--static .clock,.day--static .day-steps,.day--static .day-right{display:none}
+.day--static .day-texts{min-height:0;max-width:none;display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(40px,5vw,64px) clamp(24px,3vw,40px);margin-top:36px}
+.day--static .m{position:static;opacity:1;transform:none;pointer-events:auto}
+.day--static .m-img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;margin-top:18px}
+.day--static .m-kicker{font-size:13px;color:var(--accent)}
 
 /* =========================================================
    PANELES DIVIDIDOS
@@ -288,19 +321,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
   .gallery{grid-template-columns:repeat(2,1fr)}
   .ftr-grid{grid-template-columns:1fr 1fr}
   .ftr-logo{grid-column:1 / -1}
-  .strip-media{grid-template-columns:repeat(2,1fr)}
-  .strip-media img:nth-child(n+3){display:none}
+  .day--static .day-texts{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   .hdr .pill--accent{padding:0 18px;font-size:13px}
-  .st{letter-spacing:.04em}
-  .st--r,.st--c{align-items:flex-start;text-align:left}
   .ftr-grid{grid-template-columns:1fr}
 }
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .js .rv,.js .ln,.js .hero-col,.js .hc img,.js .mask>span,.js .hero-logo .wm>span,.js .hero-logo-sub,.js .hero-meta,.js .hero-scroll,.drawer li{opacity:1!important;transform:none!important}
+  .js .rv,.js .hero-col,.js .hc img,.js .mask>span,.js .hero-logo .wm>span,.js .hero-logo-sub,.js .hero-meta,.js .hero-scroll,.drawer li{opacity:1!important;transform:none!important}
   .js .split-media::after{transform:scaleX(0)!important}
   .js .loader{display:none}
 }

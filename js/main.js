@@ -9,7 +9,6 @@
   /* ---------- Escalonado automático: índice entre hermanos que se revelan ---------- */
   const parents = new Set($$('.rv').map(el => el.parentElement));
   parents.forEach(p => $$(':scope > .rv', p).forEach((el, i) => el.style.setProperty('--i', i)));
-  $$('.st').forEach(st => $$('.ln', st).forEach((ln, i) => ln.style.setProperty('--i', i)));
   $$('.drawer li').forEach((li, i) => li.style.setProperty('--i', i));
 
   /* ---------- Revelado con IntersectionObserver ---------- */
@@ -18,7 +17,7 @@
     e.target.classList.add('is-in');
     io.unobserve(e.target);
   }), { rootMargin: '0px 0px -8% 0px', threshold: .06 });
-  $$('.rv, .st').forEach(el => io.observe(el));
+  $$('.rv').forEach(el => io.observe(el));
 
   // Paneles divididos: la cortina de la foto se retira cuando el panel entra
   const splitIO = new IntersectionObserver(entries => entries.forEach(e => {
@@ -120,6 +119,27 @@
     loader.addEventListener('click', start, { once: true });
   }
 
+  /* ---------- Un día en Pachanka ---------- */
+  const day = $('#un-dia');
+  const moments = $$('.m', day), frames = $$('.fr', day), stepBtns = $$('.day-step', day);
+  const STEPS = moments.length;
+  let step = 0, dayST = null;
+  // Arranca como lista; GSAP la convierte en sección fija solo en escritorio
+  day.classList.add('day--static');
+  function setStep(n) {
+    if (n === step) return;
+    step = n;
+    day.style.setProperty('--s', n);
+    moments.forEach((m, i) => m.classList.toggle('is-active', i === n));
+    frames.forEach((f, i) => { f.classList.toggle('is-active', i === n); f.classList.toggle('is-past', i < n); });
+    stepBtns.forEach((b, i) => b.classList.toggle('is-active', i === n));
+  }
+  stepBtns.forEach((b, i) => b.addEventListener('click', () => {
+    if (!dayST) return;
+    const y = dayST.start + (dayST.end - dayST.start) * (i + .5) / STEPS;
+    lenis ? lenis.scrollTo(y, { duration: 1, easing: easeInOutCubic }) : scrollTo({ top: y, behavior: 'smooth' });
+  }));
+
   /* ---------- Animaciones ligadas al scroll (GSAP) ---------- */
   if (window.gsap && window.ScrollTrigger && !reduce) {
     gsap.registerPlugin(ScrollTrigger);
@@ -138,13 +158,28 @@
     gsap.to('.hero-copy, .hero-logo', { yPercent: -18, opacity: 0, ease: 'none', force3D: true,
       scrollTrigger: { trigger: '.hero', start: 'top top', end: '85% top', scrub: true } });
 
-    // Fotos de los paneles y franja del manifiesto
+    // Fotos de los paneles
     $$('[data-parallax]').forEach(el => {
       const a = +el.dataset.parallax;
       gsap.fromTo(el, { yPercent: -a }, { yPercent: a, ease: 'none', force3D: true,
         scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
     });
-    gsap.fromTo('.strip-media', { yPercent: -10 }, { yPercent: 10, ease: 'none', force3D: true,
-      scrollTrigger: { trigger: '.strip', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+    // Un día en Pachanka: en escritorio la sección se fija y cada tramo de scroll es una hora del día
+    ScrollTrigger.matchMedia({
+      '(min-width: 900px)': () => {
+        day.classList.remove('day--static');
+        const bar = $('#dayBar');
+        dayST = ScrollTrigger.create({
+          trigger: day, start: 'top top', end: () => '+=' + innerHeight * 2.6,
+          pin: true, anticipatePin: 1, invalidateOnRefresh: true,
+          onUpdate: s => {
+            bar.style.transform = `scaleX(${s.progress.toFixed(4)})`;
+            setStep(Math.min(STEPS - 1, Math.floor(s.progress * STEPS)));
+          }
+        });
+        return () => { dayST = null; day.classList.add('day--static'); };
+      }
+    });
   }
 })();
