@@ -261,9 +261,9 @@
     let i = 0;
     bodyEl.innerHTML = cat.groups.map(g => {
       const title = g[lang] ? `<h3 class="mp-group">${esc(g[lang])}</h3>` : '';
-      const items = g.items.map(([name, price, dEs, dEn, nameEn]) => {
-        const n = lang === 'en' && nameEn ? nameEn : name, d = lang === 'en' ? dEn : dEs;
-        return `<li class="mp-item" style="--i:${Math.min(i++, 14)}"><div class="mp-row"><span class="mp-name">${esc(n)}</span><span class="mp-dots"></span><span class="mp-price">${money(price)}</span></div>${d ? `<p class="mp-desc">${esc(d)}</p>` : ''}</li>`;
+      const items = g.items.map(it => {
+        const n = it[lang] || it.es, d = (lang === 'en' ? it.den : it.des) || '';
+        return `<li class="mp-item" style="--i:${Math.min(i++, 14)}"><div class="mp-row"><span class="mp-name">${esc(n)}</span><span class="mp-dots"></span><span class="mp-price">${money(it.p)}</span></div>${d ? `<p class="mp-desc">${esc(d)}</p>` : ''}</li>`;
       }).join('');
       return `${title}<ul class="mp-list">${items}</ul>`;
     }).join('');

@@ -1,173 +1,176 @@
-/* Carta completa de Pachanka (de sus cartas en PDF: "Carta Pachanka" y "Piqueos y bebidas").
-   Cada plato: [nombre, precio, descripción ES, descripción EN, nombre EN opcional].
-   Los nombres de platos peruanos se mantienen en español también en inglés. */
+/* Carta de Pachanka — transcrita de "CARTA PACHANKA ACTUALIZADA" (PDF del restaurante).
+   Un solo archivo de datos para la landing y la carta digital: si cambia un precio,
+   se cambia aquí y las dos webs quedan iguales.
+
+   Categoría: { id, es, en, groups:[{ es?, en?, items:[] }] }
+   Plato:     { id, es, en, p (precio en soles), des (descripción ES), den (descripción EN) }
+   La foto de cada plato se busca en assets/platos/<id>.jpg (si no existe, se ve el marcador). */
 window.PK_MENU = [
-  { id: 'entradas', es: 'Pá empezar', en: 'To start', groups: [{ items: [
-    ['Ceviche Pachanka', 33, 'Dados de pescado, láminas de pulpo y daditos de palta.', 'Diced fish, thin octopus slices and avocado.'],
-    ['Causa acevichada', 28, 'Papa amarilla sobre huancaína, coronada con ceviche al rocoto.', 'Yellow potato over huancaína sauce, topped with rocoto ceviche.'],
-    ['Causa con lomo saltado', 29, 'Papa amarilla rellena de palta, con lomo fino salteado al wok.', 'Yellow potato filled with avocado, topped with wok-tossed beef.'],
-    ['Leche de tigre', 22, 'Pescado y langostinos en salsa acevichada, con brocheta de chicharrón.', 'Fish and prawns in ceviche sauce, with a crispy pork skewer.'],
-    ['Tiradito chalaco', 28, 'Pescado y conchitas en salsa chalaca al ají amarillo, mousse de palta y camote.', 'Fish and scallops in ají amarillo chalaca sauce, avocado mousse and sweet potato.'],
-    ['Maki causa furay', 30, 'Roll de causa al panko, relleno de palta y langostinos, en salsa acevichada.', 'Panko causa roll with avocado and prawns, in ceviche sauce.'],
-    ['Langostinos al panko', 30, '8 langostinos crujientes con salsa de maracuyá.', '8 crispy prawns with passion fruit sauce.'],
-    ['Chicharrón de pollo', 38, 'Tiras de pollo al panko con papas fritas, ensalada y salsa tártara.', 'Panko chicken strips with fries, salad and tartar sauce.']
-  ]}]},
-  { id: 'fusion', es: 'Criollo fusión', en: 'Criollo fusion', groups: [{ items: [
-    ['Arroz cremoso con lomo saltado', 35, 'Arroz en crema de ají amarillo y parmesano, con lomo saltado al wok.', 'Creamy ají amarillo and parmesan rice with wok-tossed beef.'],
-    ['Asado de tira de la abuela', 35, 'Tres horas de cocción, con puré rústico y vegetales salteados.', 'Short ribs slow-cooked for three hours, with rustic mash and sautéed vegetables.'],
-    ['Fetuccini huancaíno con lomo strogonoff', 35, 'Fetuccini a la huancaína con lomo fino y champiñones en salsa strogonoff.', 'Fettuccine in huancaína sauce with beef tenderloin and mushroom stroganoff.'],
-    ['Chaufa de chancho al cilindro', 23, 'Chanchito con especias y verduras chinas, al wok con arroz.', 'Spiced pork with Chinese vegetables, wok-fried with rice.'],
-    ['Fetuccini a la crema con milanesa', 29, 'En salsa bechamel, con suprema de pollo, jamón y queso.', 'In béchamel sauce, with breaded chicken, ham and cheese.'],
-    ['Chaufa amazónico', 28, 'Cecina, chorizo amazónico, costras de pollo, plátano y ajicito de cocona.', 'Amazonian cured pork and sausage, crispy chicken, plantain and cocona chili.'],
-    ['Arroz nikkei', 28, 'Pollo y vegetales en mantequilla de ajos, arroz frito en salsa de ostión y tortilla.', 'Chicken and vegetables in garlic butter, oyster-sauce fried rice and omelette.'],
-    ['Milanesa strogonoff', 30, 'Pechuga al panko con champiñones en salsa strogonoff y papas peruanitas.', 'Panko chicken breast with mushroom stroganoff and Peruvian potatoes.']
-  ]}]},
-  { id: 'clasicos', es: 'Nuestros clásicos', en: 'Our classics', groups: [{ items: [
-    ['Lomo saltado', 37, 'Lomo fino al wok, papas amarillas crujientes y arroz con choclo.', 'Wok-tossed beef tenderloin, crispy yellow potatoes and corn rice.'],
-    ['Pollo saltado', 28, 'Pechuga salteada con cebolla, tomate y sillao, papas fritas y arroz con choclo.', 'Chicken stir-fried with onion, tomato and soy sauce, fries and corn rice.'],
-    ['Tallarín saltado carretillero', 27, 'Spaghetti salteado con lomo fino y vegetales en salsa carretillera.', 'Spaghetti stir-fried with beef and vegetables in carretillera sauce.'],
-    ['Tallarín saltado carretillero con pollo', 25, 'Spaghetti salteado con pollo y vegetales en salsa carretillera.', 'Spaghetti stir-fried with chicken and vegetables in carretillera sauce.'],
-    ['Chaufa de carne o pollo', 22, 'Arroz frito con verduras y omelette montado.', 'Fried rice with vegetables, topped with an omelette.'],
-    ['Spaguetti al pesto con churrasco', 28, 'Con churrasco de res a la parrilla o milanesa de pollo.', 'With grilled beef steak or breaded chicken.'],
-    ['Pechuga a la plancha', 28, 'Con papas fritas, arroz y ensalada mixta.', 'With fries, rice and mixed salad.'],
-    ['Bisteck a lo pobre', 28, 'Con papas crujientes, plátano frito y huevo al gusto.', 'With crispy potatoes, fried plantain and an egg your way.'],
-    ['Tacu tacu a lo pobre', 34, 'Frejoles y arroz en costra crujiente, lomo al wok, huevo y plátano.', 'Crispy bean-and-rice cake with wok-tossed beef, egg and plantain.']
-  ]}]},
-  { id: 'mar', es: 'Del mar', en: 'From the sea', groups: [{ items: [
-    ['Trío Pachankero', 38, 'Arroz cremoso de mariscos, cevichito de la casa y aros de calamar.', 'Creamy seafood rice, house ceviche and calamari rings.'],
-    ['Arroz con mariscos', 30, 'Arroz cremoso salteado con frutos del mar y toque chalaco.', 'Creamy rice sautéed with seafood, Callao style.'],
-    ['Tacu tacu a lo macho', 34, 'Tacu tacu crocante con filete de pescado en salsa de mariscos.', 'Crispy tacu tacu with fish fillet in seafood sauce.'],
-    ['Tacu tacu mar y tierra', 36, 'Tacu tacu con lomo fino al wok y salsa cremosa de mariscos.', 'Tacu tacu with wok-tossed beef and creamy seafood sauce.'],
-    ['Dúo marino', 34, 'Arroz cremoso con mariscos y ceviche al rocoto.', 'Creamy seafood rice with rocoto ceviche.'],
-    ['Fettuccine frutti di mare', 32, 'Mariscos en mantequilla y vino blanco, con filete de pescado al grill.', 'Seafood in butter and white wine, with grilled fish fillet.']
-  ]}]},
-  { id: 'finde', es: 'Fin de semana', en: 'Weekends', groups: [{ es: 'Especiales de fin de semana', en: 'Weekend specials', items: [
-    ['Arroz con pato', 55, 'Arroz meloso con loche, cerveza negra y chicha de jora, magret y pierna confitada, con causitas en huancaína.', 'Creamy rice with loche squash, dark beer and chicha de jora, duck breast and confit leg, with huancaína causitas.'],
-    ['Chanchito a la caja china', 38, 'Chanchito crocante con papitas cocktail a las finas hierbas y vegetales frescos.', 'Crispy pork with herbed baby potatoes and fresh vegetables.'],
-    ['Carapulcra con sopa seca', 35, 'Guiso del sur con tallarines y panceta crocante.', 'Southern Peruvian stew with noodles and crispy pork belly.']
-  ]}]},
-  { id: 'piqueos', es: 'Piqueos', en: 'Bar bites', groups: [
-    { es: 'Para compartir', en: 'To share', items: [
-      ['Piqueo Pachanka', 38, 'Alitas BBQ, papitas, tequeños de lomo saltado y ají de gallina, y maki causas de lomo.', 'BBQ wings, fries, lomo saltado and ají de gallina tequeños, and beef causa maki.'],
-      ['Tequeños criollos', 22, 'Rellenos de lomo saltado y ají de gallina. 8 unidades.', 'Filled with lomo saltado and ají de gallina. 8 pieces.'],
-      ['Tequeños de queso', 18, 'Rellenos de queso fresco, con guacamole.', 'Filled with fresh cheese, with guacamole.'],
-      ['Salchipapa Pachanka', 19, 'Papas, chorizo a las finas hierbas, chorizo clásico, salchicha y huevo frito.', 'Fries, herbed and classic chorizo, sausage and a fried egg.'],
-      ['Salchipapa crispy', 19, 'Papas con chicharroncitos de pollo y salchicha.', 'Fries with crispy chicken bites and sausage.']
-    ]},
-    { es: 'Alitas · 8 unidades con papas fritas', en: 'Wings · 8 pieces with fries', items: [
-      ['Alitas BBQ', 24, 'En salsa BBQ.', 'In BBQ sauce.'],
-      ['Alitas búfalo', 23, 'En salsa búfalo.', 'In buffalo sauce.'],
-      ['Alitas broaster', 23, 'Marinadas en salsa de la casa.', 'Marinated in the house sauce.'],
-      ['Alitas acevichadas', 25, 'En salsa acevichada.', 'In ceviche sauce.']
-    ]},
-    { es: 'Hamburguesas', en: 'Burgers', items: [
-      ['Hamburguesa francesa', 22, '120 g de carne, doble queso edam, champiñones strogonoff, tocino y cebolla caramelizada.', '120 g patty, double edam, mushroom stroganoff, bacon and caramelized onion.'],
-      ['Cheese burger', 18, '150 g de carne, queso cheddar, lechuga y tomate.', '150 g patty, cheddar, lettuce and tomato.'],
-      ['Hamburguesa royal', 20, '150 g de carne, cheddar, huevo, lechuga y tomate.', '150 g patty, cheddar, egg, lettuce and tomato.']
-    ]},
-    { es: 'Pizzas', en: 'Pizzas', items: [
-      ['Pizza Pachanka', 34, 'Jamón ahumado, chorizo, champiñones, aceitunas, pimiento y cebolla caramelizada.', 'Smoked ham, chorizo, mushrooms, olives, peppers and caramelized onion.'],
-      ['Pizza americana', 32, 'Pomodoro, mozzarella y jamón.', 'Tomato, mozzarella and ham.'],
-      ['Pizza hawaiana', 33, 'Pomodoro, mozzarella, piña y jamón.', 'Tomato, mozzarella, pineapple and ham.'],
-      ['Pizza pepperoni', 33, 'Pomodoro, mozzarella y pepperoni.', 'Tomato, mozzarella and pepperoni.'],
-      ['Pizza full meat', 35, 'Carne, chorizo, tocino y pepperoni.', 'Beef, chorizo, bacon and pepperoni.'],
-      ['Pizza chicken BBQ', 35, 'Pollo a la parrilla, tocino, cebolla y salsa BBQ.', 'Grilled chicken, bacon, onion and BBQ sauce.'],
-      ['Pizza vegetariana', 30, 'Champiñones, cebolla, aceitunas y pimiento.', 'Mushrooms, onion, olives and peppers.']
-    ]}
-  ]},
-  { id: 'mas', es: 'Ensaladas y más', en: 'Salads & more', groups: [
-    { es: 'Ensaladas', en: 'Salads', items: [
-      ['Ensalada Pachanka', 22, 'Lechugas, tomates cherry, jamón ahumado, palta, rabanito y wantán crocante.', 'Lettuce, cherry tomatoes, smoked ham, avocado, radish and crispy wonton.'],
-      ['Ensalada parrillera', 24, 'Pollo al grill, lechugas, tomates cherry y aceitunas, con aderezo de mostaza y miel.', 'Grilled chicken, lettuce, cherry tomatoes and olives, with honey mustard dressing.'],
-      ['Ensalada César', 22, 'Lechuga romana, crutones, pollo a la plancha y parmesano.', 'Romaine, croutons, grilled chicken and parmesan.']
-    ]},
-    { es: 'Para los peques · incluye bebida', en: 'For kids · drink included', items: [
-      ['Milanesa con papas', 24, 'Pollo al panko con papitas crujientes.', 'Panko chicken with crispy fries.', 'Breaded chicken with fries'],
-      ['Spaguetti al alfredo', 23, 'Receta clásica con jamón.', 'Classic recipe with ham.']
-    ]},
-    { es: 'Guarniciones', en: 'Sides', items: [
-      ['Porción de arroz', 8, '', '', 'Rice'],
-      ['Papas fritas', 8, '', '', 'Fries'],
-      ['Puré de papas', 9, '', '', 'Mashed potatoes'],
-      ['Ensalada mixta', 6, '', '', 'Mixed salad'],
-      ['Plátano frito', 5, '', '', 'Fried plantain'],
-      ['Huevo frito', 3.5, '', '', 'Fried egg'],
-      ['Pechuga de pollo (80 g)', 12, '', '', 'Chicken breast (80 g)']
-    ]}
-  ]},
-  { id: 'postres', es: 'Postres', en: 'Desserts', groups: [{ items: [
-    ['Picarones Pachanka', 16, 'Bañados en miel, con una bola de helado.', 'Drizzled with syrup, with a scoop of ice cream.'],
-    ['Pie de manzana con helado', 17, 'Hojaldre con compota de manzanas acarameladas.', 'Puff pastry with caramelized apple compote.', 'Apple pie with ice cream'],
-    ['Brownie con helado', 17, 'Con helado de temporada y fudge.', 'With seasonal ice cream and fudge.', 'Brownie with ice cream'],
-    ['Cheesecake de fresa', 16, 'Base de galleta y reducción de fresas.', 'Cookie crust with strawberry reduction.', 'Strawberry cheesecake'],
-    ['Cheesecake de maracuyá', 16, 'Base de galleta, queso crema y maracuyá.', 'Cookie crust, cream cheese and passion fruit.', 'Passion fruit cheesecake']
-  ]}]},
-  { id: 'bebidas', es: 'Bebidas', en: 'Drinks', groups: [
-    { es: 'Limonadas y jugos', en: 'Lemonades & juices', items: [
-      ['Pachanka Fresh', 10, 'La limonada de la casa.', 'The house lemonade.'],
-      ['Limonada clásica', 5, '', '', 'Classic lemonade'],
-      ['Limonada de frutos rojos', 10, '', '', 'Red berry lemonade'],
-      ['Limonada de hierba buena', 6, '', '', 'Mint lemonade'],
-      ['Limonada de hierba luisa', 6, '', '', 'Lemongrass lemonade'],
-      ['Jugo de maracuyá', 5, '', '', 'Passion fruit juice'],
-      ['Limonada clásica (1 L)', 17, '', '', 'Classic lemonade (1 L)'],
-      ['Limonada de hierbas (1 L)', 18, '', '', 'Herb lemonade (1 L)'],
-      ['Jugo de maracuyá (1 L)', 18, '', '', 'Passion fruit juice (1 L)']
-    ]},
-    { es: 'Infusiones', en: 'Herbal teas', items: [
-      ['Hierba luisa', 5, '', '', 'Lemongrass'],
-      ['Manzanilla', 5, '', '', 'Chamomile'],
-      ['Menta', 5, '', '', 'Mint']
-    ]},
-    { es: 'Gaseosas y agua', en: 'Soft drinks & water', items: [
-      ['Coca-Cola / Coca-Cola Zero', 5, '', ''],
-      ['Inca Kola / Inca Kola Zero', 5, '', ''],
-      ['Fanta', 5, '', ''],
-      ['Agua San Mateo', 5, 'Con o sin gas.', 'Still or sparkling.']
-    ]}
-  ]},
-  { id: 'tragos', es: 'Tragos', en: 'Bar', groups: [
-    { es: 'Lo nuestro', en: 'House cocktails', items: [
-      ['Pachanka Citrius', 19, 'Pisco macerado en flor de jamaica, con fresa y frutas cítricas.', 'Hibiscus-infused pisco with strawberry and citrus.'],
-      ['Pachanka Punch', 19, 'Pisco Hualcará macerado en canela, con zumo de piña.', 'Cinnamon-infused Hualcará pisco with pineapple juice.'],
-      ['Pachanka Pasión', 19, 'Ron rubio, naranja y maracuyá, huacatay y un toque de Raymi de trigo.', 'Golden rum, orange and passion fruit, huacatay and a dash of Raymi wheat beer.']
-    ]},
-    { es: 'Piscos', en: 'Pisco', items: [
-      ['Pisco sour', 19, 'Clásico, maracuyá, hoja de coca, flor de Jamaica, eucalipto, maíz morado o canela.', 'Classic, passion fruit, coca leaf, hibiscus, eucalyptus, purple corn or cinnamon.'],
-      ['Chilcano', 18, 'En los mismos siete sabores.', 'In the same seven flavors.']
-    ]},
-    { es: 'Gin', en: 'Gin', items: [
-      ['Bombay tonic', 25, '', ''],
-      ['Beefeater tonic', 25, '', ''],
-      ['Citadelle tonic', 25, '', '']
-    ]},
-    { es: 'Cervezas', en: 'Beer', items: [
-      ['Pilsen', 10, '', ''],
-      ['Raymi dorada o de trigo', 10, '', '', 'Raymi golden or wheat'],
-      ['Cusqueña dorada o roja', 10, '', '', 'Cusqueña golden or red'],
-      ['Corona', 10, '', '']
-    ]},
-    { es: 'Ron', en: 'Rum', items: [
-      ['Mojito', 18, 'Hierba buena, albahaca o menta.', 'Spearmint, basil or mint.'],
-      ['Cuba libre', 18, '', ''],
-      ['Santa Teresa', 18, 'Con o sin Coca-Cola.', 'With or without Coca-Cola.'],
-      ['Flor de Caña 12 años', 18, 'Con o sin Coca-Cola.', 'With or without Coca-Cola.', 'Flor de Caña 12 years'],
-      ['Zacapa 12 años', 18, 'Con o sin Coca-Cola.', 'With or without Coca-Cola.', 'Zacapa 12 years']
-    ]},
-    { es: 'Vodka y whisky', en: 'Vodka & whisky', items: [
-      ['Smirnoff con jugo de naranja', 18, '', '', 'Smirnoff with orange juice'],
-      ['Absolut con jugo de naranja', 20, '', '', 'Absolut with orange juice'],
-      ['Johnnie Walker', 20, 'Con o sin Coca-Cola, o con agua.', 'With or without Coca-Cola, or with water.'],
-      ["Jack Daniel's", 20, 'Con o sin Coca-Cola, o con agua.', 'With or without Coca-Cola, or with water.'],
-      ["Jack Daniel's Honey", 20, '', '']
-    ]},
-    { es: 'Vinos y otros', en: 'Wine & others', items: [
-      ['Sangría por copa', 12, '', '', 'Sangria by the glass'],
-      ['Sangría (½ litro)', 18, '', '', 'Sangria (½ liter)'],
-      ['Sangría (1 litro)', 34, '', '', 'Sangria (1 liter)'],
-      ['José Cuervo (shot)', 12, '', ''],
-      ['Anís Nájar (shot)', 11, '', ''],
-      ['Jägermeister', 25, 'Con o sin jugo de naranja.', 'With or without orange juice.']
-    ]}
-  ]}
+  {
+    id: 'entradas', es: 'Pá empezar', en: 'To start',
+    groups: [{ items: [
+      { id: 'ceviche-pachanka', es: 'Ceviche Pachanka', en: 'Ceviche Pachanka', p: 33,
+        des: 'Dados de pescado, láminas de pulpo, coronados con daditos de palta.',
+        den: 'Diced fish and thin octopus slices, crowned with avocado.' },
+      { id: 'causa-acevichada', es: 'Causa acevichada', en: 'Causa acevichada', p: 30,
+        des: 'Suave masa de papa amarilla, sobre un espejo de salsa huancaína, coronada con un ceviche al rocoto.',
+        den: 'Soft yellow potato cake over a mirror of huancaína sauce, crowned with rocoto ceviche.' },
+      { id: 'leche-de-tigre', es: 'Leche de tigre', en: 'Leche de tigre', p: 24,
+        des: 'Pescado y langostinos selectos bañados en una deliciosa salsa acevichada de la casa. Acompañado de una brocheta de chicharrón.',
+        den: 'Select fish and prawns in the house ceviche marinade, with a crispy pork skewer.' },
+      { id: 'langostinos-al-panko', es: 'Langostinos al panko', en: 'Panko prawns', p: 32,
+        des: 'Crujientes y jugosos langostinos acompañados de una deliciosa salsa de maracuyá de la casa. (8 unidades)',
+        den: 'Crispy, juicy prawns with the house passion fruit sauce. (8 pieces)' }
+    ] }]
+  },
+  {
+    id: 'clasicos', es: 'Nuestros clásicos', en: 'Our classics',
+    groups: [{ items: [
+      { id: 'lomo-saltado', es: 'Lomo saltado', en: 'Lomo saltado', p: 39,
+        des: 'Trozos de lomo fino y vegetales salteados al wok, con unas crujientes papitas amarillas y arroz blanco con choclo.',
+        den: 'Wok-tossed beef tenderloin and vegetables, with crispy yellow potatoes and white rice with corn.' },
+      { id: 'pechuga-a-la-plancha', es: 'Pechuga a la plancha', en: 'Grilled chicken breast', p: 30,
+        des: 'Filete de pechuga a la plancha acompañada de papas fritas, arroz y una ensalada mixta.',
+        den: 'Grilled chicken breast with fries, rice and a mixed salad.' },
+      { id: 'tacu-tacu-a-lo-pobre', es: 'Tacu tacu a lo pobre', en: 'Tacu tacu a lo pobre', p: 36,
+        des: 'Masa crujiente de frejoles y arroz con lomo fino al wok, montado con huevo y plátano.',
+        den: 'Crispy bean-and-rice cake with wok-tossed beef, topped with a fried egg and plantain.' },
+      { id: 'spaghetti-al-pesto', es: 'Spaghetti al pesto con churrasco o milanesa', en: 'Pesto spaghetti with steak or breaded chicken', p: 30,
+        des: 'Un tradicional spaghetti bañado en salsa pesto acompañado de un suculento churrasco de res a la parrilla o una milanesa de pollo.',
+        den: 'Traditional spaghetti in pesto sauce with a juicy grilled beef steak or a breaded chicken cutlet.' },
+      { id: 'tallarin-carretillero-pollo', es: 'Tallarín saltado carretillero de pollo', en: 'Carretillero noodles with chicken', p: 28,
+        des: 'Spaghetti salteado con dados de pollo y vegetales con una peculiar salsa carretillera.',
+        den: 'Spaghetti stir-fried with diced chicken and vegetables in a distinctive carretillera sauce.' }
+    ] }]
+  },
+  {
+    id: 'fusion', es: 'Criollo fusión', en: 'Criollo fusion',
+    groups: [{ items: [
+      { id: 'asado-de-tira', es: 'Asado de tira de la abuela', en: "Grandma's short ribs", p: 37,
+        des: 'Nuestro asado de tira en cocción de 3 horas acompañado de un puré rústico y vegetales salteados.',
+        den: 'Our short ribs, slow-cooked for three hours, with rustic mashed potatoes and sautéed vegetables.' },
+      { id: 'arroz-cremoso-lomo', es: 'Arroz cremoso con lomo saltado', en: 'Creamy rice with lomo saltado', p: 38,
+        des: 'Arroz en crema de ají amarillo con toque de parmesano, montado con lomo saltado al wok.',
+        den: 'Creamy ají amarillo rice with a touch of parmesan, topped with wok-tossed beef.' },
+      { id: 'chaufa-amazonico', es: 'Chaufa amazónico', en: 'Amazonian chaufa', p: 30,
+        des: 'De la selva su chaufa: arroz salteado con cecina y chorizo amazónico, acompañado de unas crujientes costras de pollo, plátano y su infaltable ajicito de cocona.',
+        den: 'Jungle-style fried rice with cecina and Amazonian chorizo, crispy chicken, plantain and the essential cocona chili sauce.' },
+      { id: 'fetuccini-huancaina-strogonoff', es: 'Fetuccini a la huancaína con lomo strogonoff', en: 'Huancaína fettuccine with beef stroganoff', p: 38,
+        des: 'Fetuccini cremoso a la huancaína acompañado de trozos de lomo fino con champiñones en salsa strogonoff.',
+        den: 'Creamy huancaína fettuccine with beef tenderloin and mushrooms in stroganoff sauce.' },
+      { id: 'milanesa-strogonoff', es: 'Milanesa strogonoff', en: 'Chicken milanesa stroganoff', p: 32,
+        des: 'Filete de pechuga al panko cubierto de champiñones en salsa strogonoff con crujientes papas peruanitas. Puedes acompañarlo con arroz blanco o ensalada fresca.',
+        den: 'Panko chicken cutlet covered in mushroom stroganoff with crispy Peruvian potatoes. Choose white rice or a fresh salad.' }
+    ] }]
+  },
+  {
+    id: 'mar', es: 'Del mar a tu plato', en: 'From the sea',
+    groups: [{ items: [
+      { id: 'arroz-con-mariscos', es: 'Arroz con mariscos', en: 'Seafood rice', p: 32,
+        des: 'Arroz cremoso salteado con frutos del mar con nuestro toque chalaco.',
+        den: 'Creamy rice sautéed with seafood, with our Callao twist.' },
+      { id: 'duo-marino', es: 'Dúo marino', en: 'Dúo marino', p: 35,
+        des: 'Nuestro cremoso arroz con mariscos acompañado de un delicioso ceviche al rocoto.',
+        den: 'Our creamy seafood rice with a delicious rocoto ceviche.' },
+      { id: 'trio-marino', es: 'Trío marino', en: 'Trío marino', p: 39,
+        des: 'El trío perfecto. Arroz cremoso de mariscos montado con cevichito de la casa y crujientes aros de calamar.',
+        den: 'The perfect trio: creamy seafood rice topped with house ceviche and crispy calamari rings.' },
+      { id: 'tacu-tacu-mar-y-tierra', es: 'Tacu tacu mar y tierra', en: 'Surf and turf tacu tacu', p: 39,
+        des: 'Masa crujiente de frejoles y arroz con lomo fino salteado al wok y una cremosa salsa de mariscos.',
+        den: 'Crispy bean-and-rice cake with wok-tossed beef tenderloin and a creamy seafood sauce.' },
+      { id: 'fetuccini-fruto-di-mari', es: 'Fetuccini fruto di mari', en: 'Fettuccine frutti di mare', p: 34,
+        des: 'Mix de mariscos salteados con mantequilla y vino blanco envueltos en una salsa especial de mariscos, junto a un filete de pescado al grill.',
+        den: 'Seafood sautéed in butter and white wine in a special seafood sauce, with a grilled fish fillet.' }
+    ] }]
+  },
+  {
+    id: 'finde', es: 'Especiales de fin de semana', en: 'Weekend specials',
+    groups: [{ items: [
+      { id: 'chanchito-caja-china', es: 'Chanchito crujiente a la caja china', en: 'Crispy caja china pork', p: 39,
+        des: 'Chanchito crocante acompañado de papitas cocktail en finas hierbas y un mix de vegetales frescos.',
+        den: 'Crispy pork with herbed cocktail potatoes and a mix of fresh vegetables.' },
+      { id: 'carapulcra-sopa-seca', es: 'Carapulcra con sopa seca', en: 'Carapulcra with sopa seca', p: 37,
+        des: 'Clásico de nuestro sur. Tallarines y nuestro guiso muy jugoso acompañado de una panceta crocante.',
+        den: 'A southern Peruvian classic: noodles and our juicy stew with crispy pork belly.' },
+      { id: 'frejoles-seco-cabrito', es: 'Frejoles con seco de cabrito', en: 'Beans with braised goat', p: 40,
+        des: 'Un rico seco de cabrito al estilo norteño acompañado de unos suculentos frejoles canario con su rica sarza criolla.',
+        den: 'Northern-style braised goat with canary beans and a fresh criolla salsa.' }
+    ] }]
+  },
+  {
+    id: 'ensaladas', es: 'Ensaladas', en: 'Salads',
+    groups: [{ items: [
+      { id: 'ensalada-pachanka', es: 'Ensalada Pachanka', en: 'Pachanka salad', p: 22,
+        des: 'Lechugas, tomates cherry con láminas de jamón ahumado, dados de palta y transparencias de rabanito, coronadas con hilo de wantán crocante.',
+        den: 'Lettuce, cherry tomatoes, smoked ham, avocado and paper-thin radish, crowned with crispy wonton threads.' },
+      { id: 'ensalada-parrillera', es: 'Ensalada parrillera', en: 'Grilled chicken salad', p: 24,
+        des: 'Filete de pollo al grill, mix de lechugas, tomates cherry y aceitunas, bañadas con un aderezo agridulce de mostaza y miel.',
+        den: 'Grilled chicken fillet, mixed lettuce, cherry tomatoes and olives in a honey mustard dressing.' },
+      { id: 'ensalada-cesar', es: 'Ensalada César', en: 'Caesar salad', p: 22,
+        des: 'Lechuga romana, crocantes crutones, filetitos de pollo a la plancha, queso parmesano y salsa tradicional.',
+        den: 'Romaine lettuce, crunchy croutons, grilled chicken, parmesan and the traditional dressing.' }
+    ] }]
+  },
+  {
+    id: 'peques', es: 'Para los peques', en: 'For kids',
+    groups: [{ es: 'Incluye bebida', en: 'Drink included', items: [
+      { id: 'milanesa-kids', es: 'Milanesa kids', en: 'Milanesa kids', p: 25,
+        des: 'Filete de pollo empanizado al panko acompañado de papitas crujientes y bebida de cortesía.',
+        den: 'Panko breaded chicken fillet with crispy fries and a complimentary drink.' },
+      { id: 'spaguetti-alfredo', es: 'Spaguetti al alfredo', en: 'Spaghetti alfredo', p: 25,
+        des: 'Clásica receta con jamón pizzero fresco acompañado de su bebida.',
+        den: 'The classic recipe with fresh ham, drink included.' }
+    ] }]
+  },
+  {
+    id: 'postres', es: 'Postres', en: 'Desserts',
+    groups: [{ items: [
+      { id: 'cheesecake-fresa', es: 'Cheesecake de fresa', en: 'Strawberry cheesecake', p: 18,
+        des: 'Crocante masa de galleta con queso crema y coronado con su reducción de fresas glaseadas.',
+        den: 'Crunchy cookie base with cream cheese, crowned with a glazed strawberry reduction.' },
+      { id: 'pie-de-limon', es: 'Pie de limón', en: 'Lime pie', p: 18,
+        des: 'Delicioso pie de limón con el punto exacto de dulzura y acidez.',
+        den: 'Lime pie with the exact balance of sweet and tart.' },
+      { id: 'brownie-helado', es: 'Brownie con helado', en: 'Brownie with ice cream', p: 17,
+        des: 'Delicioso bizcocho de chocolate acompañado de una bola de helado con el sabor de la temporada.',
+        den: 'Chocolate brownie with a scoop of the season’s ice cream.' },
+      { id: 'picarones-helado', es: 'Picarones con helado', en: 'Picarones with ice cream', p: 19,
+        des: 'Clásicos y crujientes picarones bañados en una deliciosa miel, acompañados de una bola de helado.',
+        den: 'Classic crispy picarones drizzled with syrup and a scoop of ice cream.' }
+    ] }]
+  },
+  {
+    id: 'guarniciones', es: 'Guarniciones', en: 'Sides',
+    groups: [{ items: [
+      { id: 'porcion-de-arroz', es: 'Porción de arroz', en: 'Rice', p: 8, des: '', den: '' },
+      { id: 'papas-fritas', es: 'Papas fritas', en: 'Fries', p: 8, des: '', den: '' },
+      { id: 'platano-frito', es: 'Plátano frito', en: 'Fried plantain', p: 5, des: '', den: '' },
+      { id: 'huevo-frito', es: 'Huevo frito', en: 'Fried egg', p: 3.5, des: '', den: '' },
+      { id: 'ensalada-mixta', es: 'Ensalada mixta', en: 'Mixed salad', p: 6, des: '', den: '' },
+      { id: 'pure-de-papas', es: 'Puré de papas', en: 'Mashed potatoes', p: 9, des: '', den: '' },
+      { id: 'pechuga-de-pollo-80g', es: 'Pechuga de pollo 80 g', en: 'Chicken breast 80 g', p: 12, des: '', den: '' }
+    ] }]
+  },
+  {
+    id: 'bebidas', es: 'Bebidas', en: 'Drinks',
+    groups: [
+      { es: 'Mocktails', en: 'Mocktails', items: [
+        { id: 'rojo-atardecer', es: 'Rojo atardecer', en: 'Rojo atardecer', p: 14, des: '', den: '' },
+        { id: 'efervescencia', es: 'Efervescencia', en: 'Efervescencia', p: 14, des: '', den: '' },
+        { id: 'limonada-frutos-rojos', es: 'Limonada de frutos rojos', en: 'Red berry lemonade', p: 12, des: '', den: '' },
+        { id: 'pachanka-fresh', es: 'Pachanka Fresh', en: 'Pachanka Fresh', p: 12, des: '', den: '' },
+        { id: 'limonada-clasica-vaso', es: 'Limonada clásica · vaso', en: 'Classic lemonade · glass', p: 8, des: '', den: '' },
+        { id: 'limonada-clasica-litro', es: 'Limonada clásica · litro', en: 'Classic lemonade · 1 L', p: 20, des: '', den: '' },
+        { id: 'limonada-de-hierbas', es: 'Limonada de hierbas', en: 'Herb lemonade', p: 22, des: '', den: '' },
+        { id: 'limonada-hierba-luisa', es: 'Limonada hierba luisa', en: 'Lemongrass lemonade', p: 8, des: '', den: '' },
+        { id: 'limonada-hierba-buena', es: 'Limonada hierba buena', en: 'Spearmint lemonade', p: 8, des: '', den: '' },
+        { id: 'maracuya-litro', es: 'Maracuyá · litro', en: 'Passion fruit · 1 L', p: 22, des: '', den: '' },
+        { id: 'maracuya-vaso', es: 'Maracuyá · vaso', en: 'Passion fruit · glass', p: 8, des: '', den: '' }
+      ] },
+      { es: 'Infusiones', en: 'Herbal teas', items: [
+        { id: 'hierba-menta', es: 'Hierba menta', en: 'Mint', p: 7, des: '', den: '' },
+        { id: 'hierba-luisa', es: 'Hierba luisa', en: 'Lemongrass', p: 7, des: '', den: '' }
+      ] }
+    ]
+  }
 ];
