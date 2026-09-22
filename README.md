@@ -5,7 +5,8 @@ Segunda propuesta de diseño web para **Pachanka Restaurant**, cocina criolla co
 **Ver en vivo:** https://creative-programming-partners.github.io/pachanka-landing-v2/
 
 > Maqueta de presentación para el cliente. La carta y los precios son los de su carta vigente
-> (*CARTA PACHANKA ACTUALIZADA*); las fotos provienen de sus canales públicos y son referenciales.
+> (*CARTA PACHANKA ACTUALIZADA*). Las fotos de los platos son del archivo del restaurante
+> (carpeta *PLATOS*); las del local y las celebraciones vienen de sus canales públicos.
 
 Esta versión toma como referencia la estructura de sitios de restaurantes de autor (como [Maido](https://maido.pe/?lang=es)): portada oscura a pantalla completa, paneles divididos foto / carta. Los textos, fotos y colores son de Pachanka: carbón y amarillo mostaza de su carta de piqueos, papel kraft de su carta impresa y las letras del logo como acentos.
 
@@ -41,8 +42,9 @@ js/intro.js         Pantalla de carga
 js/menu-data.js     Carta completa (español e inglés) — mismo archivo que la carta digital
 js/i18n.js          Traducciones al inglés
 js/main.js          Menú, carta, reservas, estado de apertura, idioma y animaciones
-assets/img/         Fotos e imagen para compartir (og-image.jpg)
-assets/sketch/      Ilustraciones a tinta de la carta
+assets/img/         Fotos del local y de la portada, e imagen para compartir (og-image.jpg)
+assets/platos/      Una foto por plato, con el mismo id que en menu-data.js (aún sin usar en esta página)
+assets/sketch/      Ilustraciones a tinta de la carta (sin usar desde que los paneles llevan foto)
 ```
 
 ## Tecnología

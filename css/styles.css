@@ -207,7 +207,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 
 .day-right{position:relative;display:grid;place-items:center;padding:clamp(90px,12vh,120px) var(--side) clamp(40px,7vh,72px)}
 .frames{position:relative;width:min(34vw,470px);height:min(70vh,620px);overflow:hidden;background:var(--kraft)}
-.fr{position:absolute;inset:0;z-index:var(--z);transform:translate3d(0,101%,0);transition:transform 1.05s var(--ease-io);will-change:transform}
+/* overflow: la imagen en cola entra con scale(1.16) y se desbordaría de su marco,
+   asomando por debajo del contenedor antes de que le toque el turno */
+.fr{position:absolute;inset:0;z-index:var(--z);overflow:hidden;transform:translate3d(0,101%,0);transition:transform 1.05s var(--ease-io);will-change:transform}
 .fr.is-past{transform:translate3d(0,-24%,0)}
 .fr.is-active{transform:none}
 .fr img{width:100%;height:100%;object-fit:cover;transform:scale(1.16);transition:transform 1.5s var(--ease-out)}
@@ -233,8 +235,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .split--rev .split-media{order:2}
 .split-media{position:relative;overflow:hidden;background:var(--char-2);min-height:320px}
 .split-media > img{position:absolute;left:0;right:0;top:-8%;width:100%;height:116%;object-fit:cover;will-change:transform}
-.split-media--art{display:grid;place-items:center;background:var(--char-2) url("../assets/img/grain.png")}
-.split-media--art > img.art{position:relative;top:auto;width:min(76%,560px);height:auto;object-fit:contain;opacity:.92}
 /* Cortina que se retira al entrar (scaleX: solo composición, sin repintar) */
 .split-media::after{content:"";position:absolute;inset:0;z-index:2;background:var(--curtain,var(--char));transform-origin:right;transition:transform 1.15s var(--ease-io)}
 .split--light .split-media::after{--curtain:var(--bone)}
@@ -346,7 +346,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
   .split,.split--map{grid-template-columns:1fr;min-height:0}
   .split--rev .split-media{order:0}
   .split-media{min-height:62svh}
-  .split-media--art{min-height:48svh}
   .split--map .split-media{min-height:52svh}
   #reservas .split-media{order:-1}
   .gallery{grid-template-columns:repeat(2,1fr)}
