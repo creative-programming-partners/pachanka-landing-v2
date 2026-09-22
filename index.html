@@ -98,6 +98,7 @@
     <li><a href="#un-dia" data-i18n="nav.day">Un día en Pachanka</a></li>
     <li><a href="#carta" data-i18n="nav.menu">Nuestra carta</a></li>
     <li><a href="#carta-completa" data-open-menu data-i18n="nav.fullmenu">Carta completa</a></li>
+    <li><a href="#videos" data-i18n="nav.videos">Videos</a></li>
     <li><a href="#resenas" data-i18n="nav.reviews">Reseñas</a></li>
     <li><a href="#reservas" data-i18n="nav.book">Reservas</a></li>
     <li><a href="#eventos" data-i18n="nav.events">Eventos y celebraciones</a></li>
@@ -279,6 +280,42 @@
   </article>
 </section>
 
+<!-- VIDEOS: carrusel infinito -->
+<section class="vreel" id="videos" aria-labelledby="reelTitle">
+  <div class="vreel-head">
+    <p class="brush rv" data-i18n="vd.brush">Pachanka en movimiento</p>
+    <h2 class="title title--dark rv" id="reelTitle" data-i18n="vd.title">Los platos,<br>en video</h2>
+    <p class="lede rv" data-i18n="vd.lede">Del wok al plato. Toca cualquier video para verlo en grande.</p>
+  </div>
+  <div class="vreel-wrap" id="reelWrap">
+    <span class="vreel-fade vreel-fade--l" aria-hidden="true"></span>
+    <span class="vreel-fade vreel-fade--r" aria-hidden="true"></span>
+    <div class="vreel-track" id="reelTrack"></div>
+  </div>
+</section>
+
+<!-- VIDEO EXPANDIDO (se sobrepone y difumina el fondo) -->
+<div class="vbox" id="vbox" hidden>
+  <div class="vbox-bg" id="vboxBg"></div>
+  <div class="vbox-card" role="dialog" aria-modal="true" aria-labelledby="vboxName">
+    <button class="vbox-x" id="vboxClose" type="button" aria-label="Cerrar el video" data-i18n-aria="vd.close">&times;</button>
+    <div class="vbox-media" id="vboxMedia">
+      <video id="vboxVideo" playsinline loop controls preload="auto"></video>
+    </div>
+    <div class="vbox-info">
+      <p class="vbox-cat" id="vboxCat"></p>
+      <h3 class="vbox-name" id="vboxName"></h3>
+      <p class="vbox-desc" id="vboxDesc"></p>
+      <p class="vbox-price" id="vboxPrice"></p>
+      <div class="vbox-nav">
+        <button type="button" class="round" id="vboxPrev" aria-label="Video anterior" data-i18n-aria="vd.prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></button>
+        <span class="vbox-count" id="vboxCount"></span>
+        <button type="button" class="round" id="vboxNext" aria-label="Video siguiente" data-i18n-aria="vd.next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- RESEÑAS -->
 <section class="reviews" id="resenas">
   <div class="reviews-grid">
@@ -423,6 +460,7 @@
       <h4 data-i18n="ftr.about">Acerca de Pachanka</h4>
       <a href="#un-dia" data-i18n="nav.day">Un día en Pachanka</a>
       <a href="#carta" data-i18n="nav.menu">Nuestra carta</a>
+      <a href="#videos" data-i18n="nav.videos">Videos</a>
       <a href="#resenas" data-i18n="nav.reviews">Reseñas</a>
       <a href="#reservas" data-i18n="nav.book">Reservas</a>
       <a href="#eventos" data-i18n="nav.events">Eventos y celebraciones</a>

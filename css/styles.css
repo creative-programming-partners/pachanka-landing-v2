@@ -492,3 +492,94 @@ html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{backgrou
   .js .topics:not(.is-in) .tbar::after{transform:scaleX(var(--v))}
   .mp-body.enter .mp-item{opacity:1;transform:none}
 }
+
+/* =========================================================
+   VIDEOS: CARRUSEL INFINITO Y VIDEO EXPANDIDO
+   La cinta avanza sola con una animación de transform (se compone en GPU)
+   y se detiene al pasar el mouse o al abrir un video.
+   ========================================================= */
+.vreel{background:var(--kraft) url("../assets/img/grain.png");color:var(--ink);padding:clamp(70px,9vw,120px) 0 clamp(60px,8vw,110px);border-top:1px solid var(--line);overflow:hidden}
+.vreel-head{max-width:1180px;margin:0 auto clamp(34px,4.5vw,56px);padding:0 var(--side)}
+.vreel-head .title{margin-bottom:18px}
+.vreel-head .lede{margin:0;max-width:44ch;color:var(--muted)}
+
+.vreel-wrap{position:relative}
+/* Degradados a los lados: la cinta entra y sale sin corte */
+.vreel-fade{position:absolute;top:0;bottom:0;z-index:2;width:clamp(28px,7vw,120px);pointer-events:none}
+.vreel-fade--l{left:0;background:linear-gradient(to right,var(--kraft),rgba(239,228,208,0))}
+.vreel-fade--r{right:0;background:linear-gradient(to left,var(--kraft),rgba(239,228,208,0))}
+/* Sin gap: cada tarjeta lleva su margen, así -50% cae justo en la copia */
+.vreel-track{--g:clamp(12px,1.4vw,20px);display:flex;width:max-content;padding:4px 0;will-change:transform}
+.vreel-track.is-running{animation:vreel 52s linear infinite}
+.vreel-track.is-frozen{animation-play-state:paused}
+@keyframes vreel{to{transform:translate3d(-50%,0,0)}}
+@media (hover:hover) and (pointer:fine){.vreel-wrap:hover .vreel-track{animation-play-state:paused}}
+
+.vcard{position:relative;flex:0 0 auto;margin-right:var(--g);width:clamp(178px,20vw,260px);display:block;text-align:left;
+  transition:transform .35s var(--ease-out)}
+.vcard-media{position:relative;display:block;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--char-2);
+  box-shadow:0 10px 30px rgba(33,28,24,.14);transition:box-shadow .35s ease}
+.vcard-media video{width:100%;height:100%;object-fit:cover;display:block;background:var(--char-2)}
+.vcard-play{position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(30,26,23,.55);backdrop-filter:blur(6px);transition:background-color .25s ease,transform .3s var(--ease-out)}
+.vcard-play svg{width:14px;height:14px;fill:var(--bone);margin-left:2px}
+.vcard-name{display:block;margin-top:11px;font-size:14px;font-weight:600;line-height:1.3;color:var(--ink)}
+.vcard-dish{display:block;margin-top:2px;font-size:12px;color:var(--muted)}
+@media (hover:hover) and (pointer:fine){
+  .vcard:hover{transform:translateY(-6px)}
+  .vcard:hover .vcard-media{box-shadow:0 18px 44px rgba(33,28,24,.24)}
+  .vcard:hover .vcard-play{background:var(--mustard);transform:scale(1.1)}
+  .vcard:hover .vcard-play svg{fill:var(--char)}
+}
+.vcard:active{transform:scale(.98)}
+
+/* Video expandido: la tarjeta crece desde donde estaba y el fondo se difumina */
+.vbox{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:clamp(10px,2.4vw,34px)}
+.vbox[hidden]{display:none}
+.vbox-bg{position:absolute;inset:0;background:rgba(18,15,13,.72);backdrop-filter:blur(20px) saturate(.85);
+  -webkit-backdrop-filter:blur(20px) saturate(.85);opacity:0;transition:opacity .4s ease}
+@supports not (backdrop-filter:blur(2px)){.vbox-bg{background:rgba(18,15,13,.95)}}
+.vbox.open .vbox-bg{opacity:1}
+
+.vbox-card{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.72fr);
+  align-items:center;gap:clamp(18px,3vw,40px);width:min(1080px,100%);max-height:calc(100dvh - 2 * clamp(10px,2.4vw,34px))}
+.vbox-media{position:relative;justify-self:end;width:100%;max-width:min(52vh,460px);aspect-ratio:4/5;border-radius:20px;overflow:hidden;
+  background:var(--char-2);box-shadow:0 40px 90px rgba(0,0,0,.55);transform-origin:center center;
+  transition:transform .62s var(--ease-out),opacity .3s ease}
+.vbox-media video{width:100%;height:100%;object-fit:cover;display:block}
+.vbox-info{color:var(--bone);opacity:0;transform:translate3d(0,14px,0);transition:opacity .45s ease .18s,transform .55s var(--ease-out) .18s}
+.vbox.open .vbox-info{opacity:1;transform:none}
+.vbox-cat{margin:0 0 10px;font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--butter)}
+.vbox-name{margin:0;font-size:clamp(24px,3vw,40px);font-weight:600;line-height:1.08;letter-spacing:-.015em}
+.vbox-desc{margin:14px 0 0;max-width:42ch;font-size:15.5px;line-height:1.6;color:var(--muted-d)}
+.vbox-price{margin:16px 0 0;font-size:22px;font-weight:600;color:var(--mustard);font-variant-numeric:tabular-nums}
+.vbox-nav{display:flex;align-items:center;gap:14px;margin-top:clamp(18px,2.6vw,28px)}
+.vbox-count{font-size:12.5px;letter-spacing:.06em;color:var(--muted-d)}
+.vbox .round{width:44px;height:44px;border-radius:50%;border:1px solid rgba(248,242,232,.32);display:grid;place-items:center;
+  transition:background-color .2s ease,border-color .2s ease,transform .16s var(--ease-out)}
+.vbox .round svg{width:19px;height:19px;fill:none;stroke:var(--bone);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.vbox .round:hover{background:var(--bone);border-color:var(--bone)}
+.vbox .round:hover svg{stroke:var(--char)}
+.vbox .round:active{transform:scale(.94)}
+.vbox-x{position:absolute;top:-6px;right:0;z-index:3;width:46px;height:46px;border-radius:50%;font-size:32px;line-height:1;
+  font-weight:300;color:var(--bone);background:rgba(248,242,232,.12);transition:background-color .2s ease,transform .25s var(--ease-out)}
+.vbox-x:hover{background:rgba(248,242,232,.24);transform:rotate(90deg)}
+
+@media (max-width:860px){
+  .vbox-card{grid-template-columns:1fr;align-content:center;gap:18px;overflow-y:auto}
+  .vbox-media{justify-self:center;max-width:none;width:auto;height:min(54vh,430px)}
+  .vbox-info{text-align:center}
+  .vbox-desc{margin-inline:auto}
+  .vbox-nav{justify-content:center}
+  .vbox-x{top:6px;right:6px;position:fixed}
+}
+@media (max-width:560px){
+  .vcard{width:clamp(150px,44vw,200px)}
+  .vbox-desc{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .vreel-track.is-running{animation:none}
+  .vreel-wrap{overflow-x:auto;padding-bottom:10px}
+  .vbox-media,.vbox-info{transition:none!important;transform:none!important;opacity:1!important}
+}

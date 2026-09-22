@@ -21,6 +21,7 @@ y la carta digital en [pachanka-carta-digital](https://github.com/creative-progr
 - Un día en Pachanka: la sección se fija al hacer scroll y recorre el día por horas (almuerzo, piqueos, after office y música en vivo)
 - Carta en paneles: nuestros clásicos, del mar a tu plato y criollo fusión
 - Carta completa en un panel lateral, con las 10 categorías de su carta vigente
+- Los platos en video: cinta que corre sola y, al tocar un video, se expande sobre la página con el nombre, la descripción y el precio del plato
 - Reseñas: calificación y temas reales de Google Maps
 - Reservas con formulario que abre WhatsApp con el mensaje listo
 - Eventos y celebraciones
@@ -31,6 +32,7 @@ y la carta digital en [pachanka-carta-digital](https://github.com/creative-progr
 - **Abierto ahora / Cerrado** según la hora de Lima (lunes a sábado 12–23 h, domingo 12–18 h)
 - **Formulario de reserva**: solo ofrece horarios válidos para el día elegido y arma el mensaje de WhatsApp
 - **Español / inglés**, con la preferencia guardada en el navegador
+- **Videos**: los ocho clips se descargan solo cuando la sección entra en pantalla y se detienen al salir
 - **Ficha para Google** (datos estructurados de restaurante) e imagen para compartir en redes
 
 ## Estructura
@@ -44,6 +46,7 @@ js/i18n.js          Traducciones al inglés
 js/main.js          Menú, carta, reservas, estado de apertura, idioma y animaciones
 assets/img/         Fotos del local y de la portada, e imagen para compartir (og-image.jpg)
 assets/platos/      Una foto por plato, con el mismo id que en menu-data.js (aún sin usar en esta página)
+assets/video/       Videos de los platos (8 s, 720 px) con su miniatura, para la cinta de videos
 assets/sketch/      Ilustraciones a tinta de la carta (sin usar desde que los paneles llevan foto)
 ```
 

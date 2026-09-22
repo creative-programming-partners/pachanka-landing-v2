@@ -11,6 +11,7 @@
     'nav.day': 'A day at Pachanka',
     'nav.menu': 'Our menu',
     'nav.fullmenu': 'Full menu',
+    'nav.videos': 'Videos',
     'nav.reviews': 'Reviews',
     'nav.book': 'Reservations',
     'nav.events': 'Events & celebrations',
@@ -59,6 +60,12 @@
     'alt.family2': 'A long table of guests raising their glasses, with piqueos in the middle',
     'alt.team': 'The Pachanka team celebrating its fifth anniversary',
 
+    'vd.brush': 'Pachanka in motion',
+    'vd.title': 'The dishes,<br>on video',
+    'vd.lede': 'From the wok to the plate. Tap any video to see it big.',
+    'vd.close': 'Close the video',
+    'vd.prev': 'Previous video',
+    'vd.next': 'Next video',
     'c1.brush': 'Our classics',
     'c1.title': 'Discover<br>our menu',
     'c1.lede': 'The classics done right: the wok, the grill and Peruvian yellow potato.',
@@ -162,6 +169,7 @@
       errName: 'Escribe tu nombre.', errDate: 'Elige una fecha desde hoy.', errTime: 'Elige una hora disponible.',
       msgHello: 'Hola Pachanka, quisiera reservar una mesa:',
       msgName: 'Nombre', msgPeople: 'Personas', msgDate: 'Fecha', msgTime: 'Hora', msgOcc: 'Ocasión', msgNotes: 'Comentario', msgThanks: '¡Gracias!',
+      vSee: 'Ver el video', vOf: 'de',
       locale: 'es-PE'
     },
     en: {
@@ -174,6 +182,7 @@
       errName: 'Please enter your name.', errDate: 'Choose a date from today on.', errTime: 'Choose an available time.',
       msgHello: 'Hi Pachanka, I would like to book a table:',
       msgName: 'Name', msgPeople: 'Guests', msgDate: 'Date', msgTime: 'Time', msgOcc: 'Occasion', msgNotes: 'Comments', msgThanks: 'Thank you!',
+      vSee: 'Watch the video', vOf: 'of',
       locale: 'en-US'
     }
   };

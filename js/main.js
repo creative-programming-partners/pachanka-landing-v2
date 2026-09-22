@@ -74,8 +74,10 @@
 
   /* ---------- Menú lateral y carta completa (paneles) ---------- */
   const drawer = $('#drawer'), overlay = $('#overlay'), burger = $('#burger'), menuPanel = $('#menuPanel');
-  const anyOpen = () => drawer.classList.contains('open') || menuPanel.classList.contains('open');
-  const lockScroll = () => { if (lenis) anyOpen() ? lenis.stop() : lenis.start(); overlay.classList.toggle('open', anyOpen()); };
+  const panelOpen = () => drawer.classList.contains('open') || menuPanel.classList.contains('open');
+  const videoOpen = () => { const v = document.getElementById('vbox'); return !!v && v.classList.contains('open'); };
+  const anyOpen = () => panelOpen() || videoOpen();
+  const lockScroll = () => { if (lenis) anyOpen() ? lenis.stop() : lenis.start(); overlay.classList.toggle('open', panelOpen()); };
 
   const setDrawer = open => {
     drawer.classList.toggle('open', open);
@@ -288,6 +290,158 @@
     showCat(next); $(`#mpt-${next}`).focus();
   });
 
+
+  /* ---------- Carrusel de videos ---------- */
+  // Cada video es un plato de la carta: el nombre, la descripción y el precio salen de PK_MENU.
+  const REEL = [
+    { f: 'lomo-saltado-1',    dish: 'lomo-saltado' },
+    { f: 'carapulcra-1',      dish: 'carapulcra-sopa-seca' },
+    { f: 'huancaina-lomo-1',  dish: 'fetuccini-huancaina-strogonoff' },
+    { f: 'langostinos-1',     dish: 'langostinos-al-panko' },
+    { f: 'tacu-mar-tierra-1', dish: 'tacu-tacu-mar-y-tierra' },
+    { f: 'fruto-di-mare-1',   dish: 'fetuccini-fruto-di-mari' },
+    { f: 'lomo-saltado-2',    dish: 'lomo-saltado' },
+    { f: 'huancaina-lomo-2',  dish: 'fetuccini-huancaina-strogonoff' }
+  ];
+  const DISHES = new Map();
+  PK_MENU.forEach(c => c.groups.forEach(g => g.items.forEach(d => DISHES.set(d.id, { d, cat: c }))));
+  const dishName = id => { const e = DISHES.get(id); return e ? (e.d[lang] || e.d.es) : ''; };
+
+  const track = $('#reelTrack'), vbox = $('#vbox'), vboxMedia = $('#vboxMedia'), vboxVideo = $('#vboxVideo');
+  const PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+
+  function renderReel() {
+    if (!track) return;
+    const card = (v, i, copy) => {
+      const n = esc(dishName(v.dish));
+      return `<button class="vcard" type="button" data-i="${i}"${copy ? ' tabindex="-1" aria-hidden="true"' : ''} aria-label="${esc(T().vSee)}: ${n}">
+        <span class="vcard-media">
+          <video muted loop playsinline preload="none" poster="assets/video/${v.f}.jpg" data-src="assets/video/${v.f}.mp4" aria-hidden="true"></video>
+          <span class="vcard-play">${PLAY}</span>
+        </span>
+        <span class="vcard-name">${n}</span>
+      </button>`;
+    };
+    // La cinta lleva la lista dos veces: al correr -50% vuelve al mismo punto sin corte
+    track.innerHTML = REEL.map((v, i) => card(v, i, false)).join('') + REEL.map((v, i) => card(v, i, true)).join('');
+    if (!reduce) track.classList.add('is-running');
+    playVisible();
+  }
+
+  // Los videos de la cinta solo se descargan y corren cuando la sección está a la vista
+  let reelOn = false;
+  function playVisible() {
+    $$('#reelTrack video').forEach(v => {
+      if (reelOn) {
+        if (!v.src) v.src = v.dataset.src;
+        const p = v.play(); if (p) p.catch(() => {});
+      } else v.pause();
+    });
+  }
+  if (track) {
+    new IntersectionObserver(es => {
+      reelOn = es.some(e => e.isIntersecting);
+      playVisible();
+    }, { rootMargin: '160px 0px' }).observe($('#videos'));
+  }
+
+  /* ---------- Video expandido ---------- */
+  let vIdx = -1, vLast = null;
+  const money2 = p => 'S/ ' + p.toFixed(2);
+
+  function fillVideo(i) {
+    vIdx = (i + REEL.length) % REEL.length;
+    const v = REEL[vIdx], e = DISHES.get(v.dish);
+    vboxVideo.poster = 'assets/video/' + v.f + '.jpg';
+    vboxVideo.src = 'assets/video/' + v.f + '.mp4';
+    vboxVideo.muted = true;                       // así puede arrancar solo; el volumen queda en los controles
+    const p = vboxVideo.play(); if (p) p.catch(() => {});
+    $('#vboxCat').textContent = e ? e.cat[lang] : '';
+    $('#vboxName').textContent = e ? (e.d[lang] || e.d.es) : '';
+    $('#vboxDesc').textContent = e ? ((lang === 'en' ? e.d.den : e.d.des) || '') : '';
+    $('#vboxPrice').textContent = e ? money2(e.d.p) : '';
+    $('#vboxCount').textContent = (vIdx + 1) + ' ' + T().vOf + ' ' + REEL.length;
+  }
+
+  // La tarjeta crece desde donde estaba hasta el centro (y al cerrar vuelve a su sitio)
+  function growFrom(rect, back) {
+    if (reduce || !rect) return;
+    const m = vboxMedia.getBoundingClientRect();
+    if (!m.width) return;
+    const k = rect.width / m.width;
+    const dx = (rect.left + rect.width / 2) - (m.left + m.width / 2);
+    const dy = (rect.top + rect.height / 2) - (m.top + m.height / 2);
+    const from = 'translate3d(' + dx + 'px,' + dy + 'px,0) scale(' + k + ')';
+    if (back) { vboxMedia.style.transform = from; return; }
+    vboxMedia.style.transition = 'none';
+    vboxMedia.style.transform = from;
+    requestAnimationFrame(() => { vboxMedia.style.transition = ''; vboxMedia.style.transform = ''; });
+  }
+
+  const cardRect = el => {
+    const m = el && el.querySelector ? el.querySelector('.vcard-media') : null;
+    return m ? m.getBoundingClientRect() : null;
+  };
+
+  function openVideo(i, card) {
+    vLast = card || null;
+    track.classList.add('is-frozen');             // la cinta se congela: la tarjeta no se mueve bajo la animación
+    vbox.hidden = false;
+    void vbox.offsetWidth;
+    vbox.classList.add('open');
+    fillVideo(i);
+    growFrom(cardRect(card), false);
+    lockScroll();
+    $('#vboxClose').focus({ preventScroll: true });
+  }
+
+  function closeVideo() {
+    if (vbox.hidden) return;
+    growFrom(cardRect(vLast), true);
+    vbox.classList.remove('open');
+    const done = () => {
+      vbox.hidden = true;
+      vboxVideo.pause(); vboxVideo.removeAttribute('src'); vboxVideo.load();
+      vboxMedia.style.transition = ''; vboxMedia.style.transform = '';
+      track.classList.remove('is-frozen');
+    };
+    reduce ? done() : setTimeout(done, 460);
+    lockScroll();
+    if (vLast && document.contains(vLast)) vLast.focus({ preventScroll: true });
+    vIdx = -1;
+  }
+
+  function stepVideo(n) {
+    vboxMedia.style.transition = 'none';
+    vboxMedia.style.opacity = '0';
+    fillVideo(vIdx + n);
+    requestAnimationFrame(() => { vboxMedia.style.transition = ''; vboxMedia.style.opacity = ''; });
+  }
+
+  if (track) {
+    track.addEventListener('click', e => {
+      const b = e.target.closest('.vcard');
+      if (b) openVideo(+b.dataset.i, b);
+    });
+    $('#vboxClose').addEventListener('click', closeVideo);
+    $('#vboxBg').addEventListener('click', closeVideo);     // tocar fuera del video lo cierra
+    $('#vboxPrev').addEventListener('click', () => stepVideo(-1));
+    $('#vboxNext').addEventListener('click', () => stepVideo(1));
+    addEventListener('keydown', e => {
+      if (vbox.hidden) return;
+      if (e.key === 'Escape') { e.preventDefault(); closeVideo(); }
+      else if (e.key === 'ArrowRight') stepVideo(1);
+      else if (e.key === 'ArrowLeft') stepVideo(-1);
+    });
+    let vx = null;
+    vbox.addEventListener('touchstart', e => { vx = e.touches[0].clientX; }, { passive: true });
+    vbox.addEventListener('touchend', e => {
+      if (vx === null) return;
+      const dx = e.changedTouches[0].clientX - vx; vx = null;
+      if (Math.abs(dx) > 60) stepVideo(dx < 0 ? 1 : -1);
+    }, { passive: true });
+  }
+
   /* ---------- Cambio de idioma ---------- */
   function setLang(next, initial) {
     lang = next;
@@ -298,6 +452,7 @@
     buildTimes();
     renderTabs();
     if (currentCat) renderCat();
+    renderReel();
     if (!initial && window.ScrollTrigger) ScrollTrigger.refresh();
   }
   $$('.js-lang').forEach(b => b.addEventListener('click', () => setLang(lang === 'es' ? 'en' : 'es')));
