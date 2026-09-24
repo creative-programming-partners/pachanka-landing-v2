@@ -26,7 +26,7 @@
 
     'hero.l1': 'Welcome,',
     'hero.l2': 'to the criollo fiesta',
-    'hero.meta': 'Criollo · Fusion &nbsp;—&nbsp; Jesús María, Lima',
+    'hero.meta': 'Jesús María, Lima',
     'hero.scroll': 'Scroll to A day at Pachanka',
 
     'day.k0': 'Noon · 12:00 p.m.',
@@ -40,12 +40,12 @@
     'day.p2': 'The bar lights up: house mocktails, herb lemonades and passion fruit by the liter until eleven.',
     'day.k3': 'Fiesta · 9:00 p.m.',
     'day.t3': 'Live music',
-    'day.p3': 'Criollo nights, live shows and games on screen. At Pachanka the table always ends up as a dance floor.',
-    'day.note': '*Depending on the weekly lineup.',
+    'day.p3': 'On mid-month and end-of-month Fridays the party starts: live criollo music and the table ends up as a dance floor.',
+    'day.note': '*Only on mid-month and end-of-month Fridays.',
+    'day.cue': 'Keep scrolling',
     'day.steps': 'Moments of the day',
     'day.go0': 'Go to 12:00', 'day.go1': 'Go to 16:00', 'day.go2': 'Go to 19:00', 'day.go3': 'Go to 21:00',
 
-    'cap.ref': 'Reference image',
 
     'alt.mesa': 'A table set with several dishes from the Pachanka menu, seen from above',
     'alt.piqueo': 'Piqueo pachankero to share, with two house drinks',
@@ -102,11 +102,15 @@
     'rev.num': '4.4',
     'rev.count': 'reviews on Google Maps',
     'rev.cta': 'Read the reviews on Google',
-    'rev.date': 'Google Maps rating and topics, September 2026.',
+    'rev.date': 'Rating and reviews from Google Maps, September 2026.',
     'rev.source': 'Google review (in Spanish)',
-    'rev.topics': 'What guests mention most',
-    'rev.t1': 'Atmosphere', 'rev.t2': 'Ceviche', 'rev.t3': 'Flavor', 'rev.t4': 'Presentation',
-    'rev.tnote': 'Number of reviews mentioning each topic.',
+    'rev.prev': 'Previous review',
+    'rev.next': 'Next review',
+    'rev.dots': 'Reviews',
+    'rev.dist': 'How they rate it on Google',
+    'rev.stars': 'stars',
+    'rev.star': 'star',
+    'rev.dnote': 'of the 287 reviews give it 4 or 5 stars.',
 
     'rs.title': 'Reservations',
     'rs.h': 'Book your table',
@@ -123,6 +127,8 @@
     'o.anniversary': 'Anniversary',
     'o.event': 'Event or celebration',
     'f.notes': 'Comments (optional)',
+    'f.parking': 'I will arrive by car',
+    'f.parking.note': 'When you send the booking we will confirm parking availability on WhatsApp.',
     'f.notes.ph': 'E.g. table near the music, high chair',
     'f.submit': 'Send booking via WhatsApp',
     'f.ok': 'Done: send the message on WhatsApp and we will confirm your booking.',
@@ -131,7 +137,7 @@
     'rs.dcta': 'Order on PedidosYa',
 
     'ev.q': 'Planning a birthday or a get-together?',
-    'ev.p1': 'Live criollo music, latin pop nights, games on screen and long tables to celebrate. We plan it with you: decorations, starters to share and the bar ready.',
+    'ev.p1': 'Live criollo music on mid-month and end-of-month Fridays, games on screen and long tables to celebrate. We plan it with you: decorations, starters to share and the bar ready.',
     'ev.p2': 'Tell us the date and the number of guests.',
     'ev.p3': 'The Pachanka team will help you plan a celebration to remember.',
     'ev.g1': 'Criollo nights', 'ev.g2': 'Birthdays', 'ev.g3': 'Long tables', 'ev.g4': 'Anniversaries',
@@ -169,7 +175,8 @@
       errName: 'Escribe tu nombre.', errDate: 'Elige una fecha desde hoy.', errTime: 'Elige una hora disponible.',
       msgHello: 'Hola Pachanka, quisiera reservar una mesa:',
       msgName: 'Nombre', msgPeople: 'Personas', msgDate: 'Fecha', msgTime: 'Hora', msgOcc: 'Ocasión', msgNotes: 'Comentario', msgThanks: '¡Gracias!',
-      vSee: 'Ver el video', vOf: 'de',
+      vSee: 'Ver el video', vOf: 'de', vOpen: 'Ver en grande',
+      msgCar: 'Llegaré en vehículo propio, ¿hay estacionamiento?',
       locale: 'es-PE'
     },
     en: {
@@ -182,7 +189,8 @@
       errName: 'Please enter your name.', errDate: 'Choose a date from today on.', errTime: 'Choose an available time.',
       msgHello: 'Hi Pachanka, I would like to book a table:',
       msgName: 'Name', msgPeople: 'Guests', msgDate: 'Date', msgTime: 'Time', msgOcc: 'Occasion', msgNotes: 'Comments', msgThanks: 'Thank you!',
-      vSee: 'Watch the video', vOf: 'of',
+      vSee: 'Watch the video', vOf: 'of', vOpen: 'See it big',
+      msgCar: 'I will arrive by car, is there parking?',
       locale: 'en-US'
     }
   };

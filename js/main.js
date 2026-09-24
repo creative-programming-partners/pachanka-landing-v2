@@ -3,9 +3,6 @@
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
-  /* ---------- Wordmark (la carga ya construyó el suyo) ---------- */
-  $$('[data-wm]').forEach(el => { if (!el.children.length) PK_WM.build(el); });
-
   /* ---------- Escalonado automático: índice entre hermanos que se revelan ---------- */
   const parents = new Set($$('.rv').map(el => el.parentElement));
   parents.forEach(p => $$(':scope > .rv', p).forEach((el, i) => el.style.setProperty('--i', i)));
@@ -130,6 +127,10 @@
     setTimeout(() => goTo(t, toForm ? () => form.guest.focus({ preventScroll: true }) : null), wasOpen ? 260 : 0);
   }));
 
+  /* ---------- Reserva: vehículo propio ---------- */
+  const park = $('#rsvParking'), parkNote = $('#rsvParkNote');
+  if (park) park.addEventListener('change', () => { parkNote.hidden = !park.checked; });
+
   /* ---------- Hora de Lima ---------- */
   const DAYS = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
   function limaNow() {
@@ -237,6 +238,7 @@
       `• ${t.msgTime}: ${fmtTime(+time)}`,
       `• ${t.msgOcc}: ${form.occasion.options[form.occasion.selectedIndex].text}`
     ];
+    if (form.parking && form.parking.checked) lines.push(`• ${t.msgCar}`);
     const notes = form.notes.value.trim();
     if (notes) lines.push(`• ${t.msgNotes}: ${notes}`);
     lines.push('', t.msgThanks);
@@ -280,8 +282,21 @@
     if (!changed && bodyEl.children.length) return;
     renderCat();
     bodyEl.scrollTop = 0;
+    requestAnimationFrame(() => { syncMore(); syncTabsEnd(); });
     if (!reduce) { bodyEl.classList.add('enter'); void bodyEl.offsetWidth; bodyEl.classList.remove('enter'); }
   }
+  // Avisos de que la carta sigue: flecha abajo mientras quede lista, y el borde
+  // difuminado de las categorías mientras queden más a la derecha
+  const mpMore = $('#mpMore');
+  const syncMore = () => {
+    if (!mpMore) return;
+    mpMore.classList.toggle('is-on', bodyEl.scrollHeight - bodyEl.scrollTop - bodyEl.clientHeight > 28);
+  };
+  const syncTabsEnd = () => tabsEl.classList.toggle('is-end', tabsEl.scrollLeft + tabsEl.clientWidth >= tabsEl.scrollWidth - 8);
+  bodyEl.addEventListener('scroll', syncMore, { passive: true });
+  tabsEl.addEventListener('scroll', syncTabsEnd, { passive: true });
+  addEventListener('resize', () => { syncMore(); syncTabsEnd(); });
+
   tabsEl.addEventListener('click', e => { const b = e.target.closest('.mp-tab'); if (b) showCat(b.dataset.cat); });
   tabsEl.addEventListener('keydown', e => {
     if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
@@ -291,24 +306,49 @@
   });
 
 
+  /* ---------- Reseñas de Google ---------- */
+  // Van pasando solas cada ocho segundos; se detienen al pasar el mouse o al usar las flechas.
+  const quotes = $$('#quotes .quote'), qDots = $('#qDots');
+  if (quotes.length && qDots) {
+    let qi = 0, qTimer = null;
+    qDots.innerHTML = quotes.map((_, i) =>
+      `<button type="button" role="tab" aria-selected="${i === 0}" aria-label="${i + 1}"></button>`).join('');
+    const dots = $$('button', qDots);
+    const showQ = i => {
+      qi = (i + quotes.length) % quotes.length;
+      quotes.forEach((q, k) => q.classList.toggle('is-on', k === qi));
+      dots.forEach((d, k) => d.setAttribute('aria-selected', k === qi));
+    };
+    const play = () => { if (!reduce) qTimer = setInterval(() => showQ(qi + 1), 8000); };
+    const stop = () => { clearInterval(qTimer); qTimer = null; };
+    const step = i => { stop(); showQ(i); play(); };
+    $('#qPrev').addEventListener('click', () => step(qi - 1));
+    $('#qNext').addEventListener('click', () => step(qi + 1));
+    qDots.addEventListener('click', e => { const i = dots.indexOf(e.target); if (i >= 0) step(i); });
+    const side = $('.rev-side');
+    side.addEventListener('mouseenter', stop);
+    side.addEventListener('mouseleave', play);
+    side.addEventListener('focusin', stop);
+    play();
+  }
+
   /* ---------- Carrusel de videos ---------- */
   // Cada video es un plato de la carta: el nombre, la descripción y el precio salen de PK_MENU.
   const REEL = [
     { f: 'lomo-saltado-1',    dish: 'lomo-saltado' },
     { f: 'carapulcra-1',      dish: 'carapulcra-sopa-seca' },
-    { f: 'huancaina-lomo-1',  dish: 'fetuccini-huancaina-strogonoff' },
     { f: 'langostinos-1',     dish: 'langostinos-al-panko' },
     { f: 'tacu-mar-tierra-1', dish: 'tacu-tacu-mar-y-tierra' },
     { f: 'fruto-di-mare-1',   dish: 'fetuccini-fruto-di-mari' },
-    { f: 'lomo-saltado-2',    dish: 'lomo-saltado' },
-    { f: 'huancaina-lomo-2',  dish: 'fetuccini-huancaina-strogonoff' }
+    { f: 'lomo-saltado-2',    dish: 'lomo-saltado' }
   ];
   const DISHES = new Map();
   PK_MENU.forEach(c => c.groups.forEach(g => g.items.forEach(d => DISHES.set(d.id, { d, cat: c }))));
   const dishName = id => { const e = DISHES.get(id); return e ? (e.d[lang] || e.d.es) : ''; };
 
   const track = $('#reelTrack'), vbox = $('#vbox'), vboxMedia = $('#vboxMedia'), vboxVideo = $('#vboxVideo');
-  const PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  // La tarjeta avisa que el video se abre en grande
+  const EXPAND = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M15 20h5v-5M9 20H4v-5"/></svg>';
 
   function renderReel() {
     if (!track) return;
@@ -317,13 +357,14 @@
       return `<button class="vcard" type="button" data-i="${i}"${copy ? ' tabindex="-1" aria-hidden="true"' : ''} aria-label="${esc(T().vSee)}: ${n}">
         <span class="vcard-media">
           <video muted loop playsinline preload="none" poster="assets/video/${v.f}.jpg" data-src="assets/video/${v.f}.mp4" aria-hidden="true"></video>
-          <span class="vcard-play">${PLAY}</span>
+          <span class="vcard-open">${EXPAND}<span>${esc(T().vOpen)}</span></span>
         </span>
         <span class="vcard-name">${n}</span>
       </button>`;
     };
-    // La cinta lleva la lista dos veces: al correr -50% vuelve al mismo punto sin corte
-    track.innerHTML = REEL.map((v, i) => card(v, i, false)).join('') + REEL.map((v, i) => card(v, i, true)).join('');
+    // La cinta lleva la lista tres veces: al correr un tercio vuelve al mismo punto sin corte
+    const set = (copia) => REEL.map((v, i) => card(v, i, copia)).join('');
+    track.innerHTML = set(false) + set(true) + set(true);
     if (!reduce) track.classList.add('is-running');
     playVisible();
   }
@@ -547,6 +588,7 @@
         dayST = ScrollTrigger.create({
           trigger: day, start: 'top top', end: () => '+=' + innerHeight * 3,
           pin: true, anticipatePin: 1, invalidateOnRefresh: true,
+          onToggle: st => day.classList.toggle('is-pinned', st.isActive),
           onUpdate: s => {
             const b = barProgress(s.progress);
             bar.style.transform = `scaleX(${b.toFixed(4)})`;

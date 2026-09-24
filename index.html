@@ -70,16 +70,25 @@
 
 <!-- PANTALLA DE CARGA -->
 <div class="loader" id="loader" aria-hidden="true">
-  <span class="wm" data-wm></span>
+  <div class="logo logo--anim logo--loader" role="img" aria-label="Pachanka, criollo · fusión">
+  <img src="assets/img/logo/l0.png" alt="" style="--i:0;--r:-4deg;--l:0.0%;--t:0.0%;--w:15.946%">
+  <img src="assets/img/logo/l1.png" alt="" style="--i:1;--r:3deg;--l:16.216%;--t:19.457%;--w:11.351%">
+  <img src="assets/img/logo/l2.png" alt="" style="--i:2;--r:-3deg;--l:27.568%;--t:14.48%;--w:13.108%">
+  <img src="assets/img/logo/l3.png" alt="" style="--i:3;--r:4deg;--l:40.541%;--t:14.027%;--w:11.216%">
+  <img src="assets/img/logo/l4.png" alt="" style="--i:4;--r:-2deg;--l:51.757%;--t:18.552%;--w:11.892%">
+  <img src="assets/img/logo/l5.png" alt="" style="--i:5;--r:3deg;--l:64.324%;--t:9.05%;--w:10.676%">
+  <img src="assets/img/logo/l6.png" alt="" style="--i:6;--r:-4deg;--l:75.541%;--t:0.0%;--w:12.838%">
+  <img src="assets/img/logo/l7.png" alt="" style="--i:7;--r:2deg;--l:88.378%;--t:19.457%;--w:11.622%">
+  <img class="logo-sub" src="assets/img/logo/sub.png" alt="" style="--i:8;--r:0deg;--l:61.351%;--t:85.52%;--w:37.703%">
+  </div>
   <span class="loader-bar"><i></i></span>
 </div>
-<script src="js/intro.js"></script>
 
 <!-- CABECERA -->
 <header class="hdr" id="hdr">
   <div class="hdr-left">
     <button class="burger" id="burger" aria-label="Abrir menú" data-i18n-aria="nav.open" aria-controls="drawer" aria-expanded="false"><span></span><span></span><span></span></button>
-    <a class="hdr-logo" href="#inicio" aria-label="Pachanka, inicio" data-i18n-aria="nav.home"><span class="wm" data-wm></span></a>
+    <a class="hdr-logo" href="#inicio" aria-label="Pachanka, inicio" data-i18n-aria="nav.home"><img class="logo" src="assets/img/logo-marca.png" alt="Pachanka" width="740" height="168"></a>
   </div>
   <div class="hdr-right">
     <span class="status js-status" aria-live="polite"><i class="status-dot"></i><span class="status-text"></span></span>
@@ -118,6 +127,7 @@
   </div>
   <div class="mp-tabs" id="mpTabs" role="tablist" aria-label="Categorías de la carta" data-i18n-aria="mp.tabs"></div>
   <div class="mp-body" id="mpBody" role="tabpanel" tabindex="-1" data-lenis-prevent></div>
+  <span class="mp-more" id="mpMore" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
   <div class="mp-foot">
     <span data-i18n="mp.note">*Precios en soles (S/).</span>
     <a href="https://creative-programming-partners.github.io/pachanka-carta-digital/" target="_blank" rel="noopener" data-i18n="mp.pdf">Abrir la carta digital</a>
@@ -135,12 +145,21 @@
   <div class="hero-shade" aria-hidden="true"></div>
   <h1 class="sr">Pachanka Restaurant</h1>
   <div class="hero-logo" aria-hidden="true">
-    <span class="wm" data-wm></span>
-    <span class="hero-logo-sub">Restaurant</span>
+    <div class="logo logo--anim logo--hero" role="img" aria-label="Pachanka, criollo · fusión">
+    <img src="assets/img/logo/l0.png" alt="" style="--i:0;--r:-4deg;--l:0.0%;--t:0.0%;--w:15.946%">
+    <img src="assets/img/logo/l1.png" alt="" style="--i:1;--r:3deg;--l:16.216%;--t:19.457%;--w:11.351%">
+    <img src="assets/img/logo/l2.png" alt="" style="--i:2;--r:-3deg;--l:27.568%;--t:14.48%;--w:13.108%">
+    <img src="assets/img/logo/l3.png" alt="" style="--i:3;--r:4deg;--l:40.541%;--t:14.027%;--w:11.216%">
+    <img src="assets/img/logo/l4.png" alt="" style="--i:4;--r:-2deg;--l:51.757%;--t:18.552%;--w:11.892%">
+    <img src="assets/img/logo/l5.png" alt="" style="--i:5;--r:3deg;--l:64.324%;--t:9.05%;--w:10.676%">
+    <img src="assets/img/logo/l6.png" alt="" style="--i:6;--r:-4deg;--l:75.541%;--t:0.0%;--w:12.838%">
+    <img src="assets/img/logo/l7.png" alt="" style="--i:7;--r:2deg;--l:88.378%;--t:19.457%;--w:11.622%">
+    <img class="logo-sub" src="assets/img/logo/sub.png" alt="" style="--i:8;--r:0deg;--l:61.351%;--t:85.52%;--w:37.703%">
+    </div>
   </div>
   <div class="hero-copy">
     <p class="hero-title"><span class="mask"><span data-i18n="hero.l1">Bienvenidos,</span></span><span class="mask"><span class="hl" data-i18n="hero.l2">a la fiesta criolla</span></span></p>
-    <p class="hero-meta"><span class="dots" aria-hidden="true"><i style="--c:var(--ochre)"></i><i style="--c:var(--sage)"></i><i style="--c:var(--coral)"></i><i style="--c:var(--teal)"></i></span><span data-i18n="hero.meta">Criollo · Fusión &nbsp;—&nbsp; Jesús María, Lima</span></p>
+    <p class="hero-meta"><span class="dots" aria-hidden="true"><i style="--c:var(--ochre)"></i><i style="--c:var(--sage)"></i><i style="--c:var(--coral)"></i><i style="--c:var(--teal)"></i></span><span data-i18n="hero.meta">Jesús María, Lima</span></p>
   </div>
   <a class="hero-scroll" href="#un-dia" aria-label="Bajar a Un día en Pachanka" data-i18n-aria="hero.scroll"><i></i></a>
 </section>
@@ -175,10 +194,11 @@
       <article class="m" data-i="3">
         <p class="m-kicker" data-i18n="day.k3">Fiesta · 9:00 p.m.</p>
         <h3 class="m-title" data-i18n="day.t3">Música en vivo</h3>
-        <p class="m-text" data-i18n="day.p3">Noches criollas, shows en vivo y partidos en pantalla. En Pachanka la mesa siempre termina siendo pista.</p><small class="m-note" data-i18n="day.note">*Según la programación de la semana.</small>
+        <p class="m-text" data-i18n="day.p3">Los viernes de quincena y de fin de mes se prende la fiesta: música criolla en vivo y la mesa termina siendo pista.</p><small class="m-note" data-i18n="day.note">*Solo viernes de quincena y de fin de mes.</small>
         <img class="m-img" src="assets/img/musica-vivo.jpg" alt="Cantante en vivo en el escenario de Pachanka, con las luces de la noche" data-i18n-alt="alt.musica" width="1000" height="1333" loading="lazy" decoding="async">
       </article>
       </div>
+      <p class="day-cue" aria-hidden="true"><span data-i18n="day.cue">Sigue bajando</span><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></p>
       <div class="day-steps" aria-label="Momentos del día" data-i18n-aria="day.steps">
         <div class="day-track">
           <span class="day-bar" id="dayBar"></span>
@@ -200,7 +220,7 @@
       <div class="fr" style="--z:2"><img src="assets/img/dia-barra.jpg" alt="" width="1000" height="1333" loading="lazy" decoding="async"></div>
       <div class="fr" style="--z:3"><img src="assets/img/musica-vivo.jpg" alt="" width="1000" height="1333" loading="lazy" decoding="async"></div>
       </div>
-      <span class="day-caption" data-i18n="cap.ref">Imagen referencial</span>
+      <span class="day-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
     </div>
   </div>
 </section>
@@ -211,7 +231,6 @@
   <article class="split split--dark">
     <div class="split-media">
       <img src="assets/img/clasicos-lomo.jpg" alt="Lomo saltado con papas amarillas y arroz, servido en el salón de Pachanka" data-i18n-alt="alt.lomo" width="1200" height="1500" loading="lazy" decoding="async" data-parallax="8">
-      <span class="caption caption--light" data-i18n="cap.ref">Imagen referencial</span>
     </div>
     <div class="split-body">
       <p class="brush rv" data-i18n="c1.brush">Nuestros clásicos</p>
@@ -236,7 +255,6 @@
   <article class="split split--light split--rev">
     <div class="split-media">
       <img src="assets/img/mar-ceviche.jpg" alt="Ceviche Pachanka en plato hondo, con palta, cancha y crocante encima" data-i18n-alt="alt.ceviche" width="1200" height="1500" loading="lazy" decoding="async" data-parallax="8">
-      <span class="caption caption--light" data-i18n="cap.ref">Imagen referencial</span>
     </div>
     <div class="split-body">
       <p class="brush rv" data-i18n="c2.brush">Del mar a tu plato</p>
@@ -259,7 +277,6 @@
   <article class="split split--dark">
     <div class="split-media">
       <img src="assets/img/fusion-arroz.jpg" alt="Arroz cremoso con lomo saltado, de la carta de Pachanka" data-i18n-alt="alt.plate" width="1200" height="1500" loading="lazy" decoding="async" data-parallax="8">
-      <span class="caption caption--light" data-i18n="cap.ref">Imagen referencial</span>
     </div>
     <div class="split-body">
       <p class="brush rv" data-i18n="c3.brush">Criollo fusión</p>
@@ -291,6 +308,8 @@
   <div class="vreel-wrap" id="reelWrap">
     <span class="vreel-fade vreel-fade--l" aria-hidden="true"></span>
     <span class="vreel-fade vreel-fade--r" aria-hidden="true"></span>
+    <span class="vreel-cue vreel-cue--l" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg></span>
+    <span class="vreel-cue vreel-cue--r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></span>
     <div class="vreel-track" id="reelTrack"></div>
   </div>
 </section>
@@ -333,22 +352,122 @@
       <div class="pills rv">
         <a class="pill" href="https://maps.google.com/?cid=7583902838810946393" target="_blank" rel="noopener" data-i18n="rev.cta">Leer las reseñas en Google</a>
       </div>
-      <p class="rating-date rv" data-i18n="rev.date">Calificación y temas de Google Maps, septiembre de 2026.</p>
+      <p class="rating-date rv" data-i18n="rev.date">Calificación y reseñas de Google Maps, septiembre de 2026.</p>
     </div>
     <div class="rev-side">
-      <figure class="quote rv">
-        <blockquote>“Los cócteles TOP (el pisco sour UNA LOCURA)”</blockquote>
-        <figcaption>Fernando C. · <span data-i18n="rev.source">reseña en Google</span></figcaption>
-      </figure>
+      <div class="quotes rv" id="quotes">
+        <figure class="quote is-on">
+          <div class="q-top">
+            <span class="q-av" style="--c:var(--ochre)" aria-hidden="true">L</span>
+            <span class="q-id"><b>Lucía V.</b>
+              <span class="q-meta">
+                <span class="q-stars" role="img" aria-label="5 de 5">
+                  <span class="stars-row stars-bg"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+                  <span class="stars-row stars-fg" style="--fill:1.0"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+                </span>
+                <span data-i18n="rev.source">Reseña en Google</span>
+              </span>
+            </span>
+            <svg class="q-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11v2.6h4.3c-.2 1-1.3 3-4.3 3a4.6 4.6 0 0 1 0-9.2c1.4 0 2.4.6 3 1.2l2-2A7.4 7.4 0 1 0 12 19.4c4.3 0 7.1-3 7.1-7.2 0-.5 0-.9-.1-1.2H12z"/></svg>
+          </div>
+          <blockquote>“Muy buena atención, reservé el día anterior para pasar mi cumpleaños y fueron muy lindos. La comida 10/10.”</blockquote>
+        </figure>
+        <figure class="quote">
+          <div class="q-top">
+            <span class="q-av" style="--c:var(--teal)" aria-hidden="true">F</span>
+            <span class="q-id"><b>Fernando C.</b>
+              <span class="q-meta">
+                <span class="q-stars" role="img" aria-label="4 de 5">
+                  <span class="stars-row stars-bg"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+                  <span class="stars-row stars-fg" style="--fill:0.8"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+                </span>
+                <span data-i18n="rev.source">Reseña en Google</span>
+              </span>
+            </span>
+            <svg class="q-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11v2.6h4.3c-.2 1-1.3 3-4.3 3a4.6 4.6 0 0 1 0-9.2c1.4 0 2.4.6 3 1.2l2-2A7.4 7.4 0 1 0 12 19.4c4.3 0 7.1-3 7.1-7.2 0-.5 0-.9-.1-1.2H12z"/></svg>
+          </div>
+          <blockquote>“Excelente atención, calidad en el servicio y el ambiente bastante tranquilo. Fui para una reunión de negocios. Y no me decepcionaron. Los cócteles TOP (el pisco sour UNA LOCURA).”</blockquote>
+        </figure>
+        <figure class="quote">
+          <div class="q-top">
+            <span class="q-av" style="--c:var(--coral)" aria-hidden="true">A</span>
+            <span class="q-id"><b>Agustina F.</b>
+              <span class="q-meta">
+                <span class="q-stars" role="img" aria-label="5 de 5">
+                  <span class="stars-row stars-bg"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+                  <span class="stars-row stars-fg" style="--fill:1.0"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+                </span>
+                <span data-i18n="rev.source">Reseña en Google</span>
+              </span>
+            </span>
+            <svg class="q-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11v2.6h4.3c-.2 1-1.3 3-4.3 3a4.6 4.6 0 0 1 0-9.2c1.4 0 2.4.6 3 1.2l2-2A7.4 7.4 0 1 0 12 19.4c4.3 0 7.1-3 7.1-7.2 0-.5 0-.9-.1-1.2H12z"/></svg>
+          </div>
+          <blockquote>“Muy rica la comida, pero el servicio se lleva la mejor estrella. Pedro nos atendió fantástico, nos explicó todos los pasos de la comida que pedimos.”</blockquote>
+        </figure>
+        <figure class="quote">
+          <div class="q-top">
+            <span class="q-av" style="--c:var(--sage)" aria-hidden="true">S</span>
+            <span class="q-id"><b>Soledad A.</b>
+              <span class="q-meta">
+                <span class="q-stars" role="img" aria-label="5 de 5">
+                  <span class="stars-row stars-bg"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+                  <span class="stars-row stars-fg" style="--fill:1.0"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+                </span>
+                <span data-i18n="rev.source">Reseña en Google</span>
+              </span>
+            </span>
+            <svg class="q-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11v2.6h4.3c-.2 1-1.3 3-4.3 3a4.6 4.6 0 0 1 0-9.2c1.4 0 2.4.6 3 1.2l2-2A7.4 7.4 0 1 0 12 19.4c4.3 0 7.1-3 7.1-7.2 0-.5 0-.9-.1-1.2H12z"/></svg>
+          </div>
+          <blockquote>“Es un espacio cálido, agradable y bonito para disfrutar de un almuerzo. La carta es variada y los platillos son bien agradables. La atención por parte del personal es esmerada.”</blockquote>
+        </figure>
+        <figure class="quote">
+          <div class="q-top">
+            <span class="q-av" style="--c:var(--brick)" aria-hidden="true">P</span>
+            <span class="q-id"><b>Paulo B.</b>
+              <span class="q-meta">
+                <span class="q-stars" role="img" aria-label="5 de 5">
+                  <span class="stars-row stars-bg"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+                  <span class="stars-row stars-fg" style="--fill:1.0"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+                </span>
+                <span data-i18n="rev.source">Reseña en Google</span>
+              </span>
+            </span>
+            <svg class="q-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11v2.6h4.3c-.2 1-1.3 3-4.3 3a4.6 4.6 0 0 1 0-9.2c1.4 0 2.4.6 3 1.2l2-2A7.4 7.4 0 1 0 12 19.4c4.3 0 7.1-3 7.1-7.2 0-.5 0-.9-.1-1.2H12z"/></svg>
+          </div>
+          <blockquote>“Gratamente sorprendidos por la riquísima comida. Muy buen servicio y buenos precios. 100% recomendado.”</blockquote>
+        </figure>
+        <figure class="quote">
+          <div class="q-top">
+            <span class="q-av" style="--c:var(--butter)" aria-hidden="true">A</span>
+            <span class="q-id"><b>Alejandra C.</b>
+              <span class="q-meta">
+                <span class="q-stars" role="img" aria-label="5 de 5">
+                  <span class="stars-row stars-bg"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+                  <span class="stars-row stars-fg" style="--fill:1.0"><svg viewBox="0 0 120 24"><use href="#star" x="0"/><use href="#star" x="24"/><use href="#star" x="48"/><use href="#star" x="72"/><use href="#star" x="96"/></svg></span>
+                </span>
+                <span data-i18n="rev.source">Reseña en Google</span>
+              </span>
+            </span>
+            <svg class="q-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11v2.6h4.3c-.2 1-1.3 3-4.3 3a4.6 4.6 0 0 1 0-9.2c1.4 0 2.4.6 3 1.2l2-2A7.4 7.4 0 1 0 12 19.4c4.3 0 7.1-3 7.1-7.2 0-.5 0-.9-.1-1.2H12z"/></svg>
+          </div>
+          <blockquote>“Estuve con mi novio un viernes y la pasamos súper bien. Excelente música para bailar y cantar a todo pulmón, la comida muy rica. El servicio muy bueno.”</blockquote>
+        </figure>
+      </div>
+      <div class="quotes-bar rv">
+        <button class="qnav" type="button" id="qPrev" aria-label="Reseña anterior" data-i18n-aria="rev.prev"><svg viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg></button>
+        <span class="qdots" id="qDots" role="tablist" aria-label="Reseñas" data-i18n-aria="rev.dots"></span>
+        <button class="qnav" type="button" id="qNext" aria-label="Reseña siguiente" data-i18n-aria="rev.next"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button>
+      </div>
       <div class="topics rv">
-        <p class="topics-title" data-i18n="rev.topics">Lo que más mencionan los clientes</p>
+        <p class="topics-title" data-i18n="rev.dist">Cómo la califican en Google</p>
         <ul>
-          <li style="--c:var(--ochre);--v:1"><span data-i18n="rev.t1">Ambiente</span><i class="tbar"></i><b>19</b></li>
-          <li style="--c:var(--coral);--v:.526"><span data-i18n="rev.t2">Ceviche</span><i class="tbar"></i><b>10</b></li>
-          <li style="--c:var(--teal);--v:.526"><span data-i18n="rev.t3">Sabor</span><i class="tbar"></i><b>10</b></li>
-          <li style="--c:var(--sage);--v:.474"><span data-i18n="rev.t4">Presentación</span><i class="tbar"></i><b>9</b></li>
+        <li style="--c:var(--sage);--v:1.0"><span>5 <span data-i18n="rev.stars">estrellas</span></span><i class="tbar"></i><b>190</b></li>
+        <li style="--c:var(--ochre);--v:0.332"><span>4 <span data-i18n="rev.stars">estrellas</span></span><i class="tbar"></i><b>63</b></li>
+        <li style="--c:var(--sand);--v:0.079"><span>3 <span data-i18n="rev.stars">estrellas</span></span><i class="tbar"></i><b>15</b></li>
+        <li style="--c:var(--blush);--v:0.032"><span>2 <span data-i18n="rev.stars">estrellas</span></span><i class="tbar"></i><b>6</b></li>
+        <li style="--c:var(--coral);--v:0.068"><span>1 <span data-i18n="rev.star">estrella</span></span><i class="tbar"></i><b>13</b></li>
         </ul>
-        <p class="topics-note" data-i18n="rev.tnote">Número de reseñas que mencionan cada tema.</p>
+        <p class="topics-note"><b>253</b> <span data-i18n="rev.dnote">de las 287 reseñas le ponen 4 o 5 estrellas.</span></p>
       </div>
     </div>
   </div>
@@ -389,6 +508,14 @@
           <label class="fld fld--full"><span data-i18n="f.notes">Comentario (opcional)</span>
             <textarea name="notes" rows="2" maxlength="200" placeholder="Ej.: mesa cerca de la música, silla para bebé" data-i18n-ph="f.notes.ph"></textarea>
           </label>
+          <div class="fld fld--full">
+            <label class="chk">
+              <input type="checkbox" name="parking" id="rsvParking">
+              <span class="chk-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span>
+              <span data-i18n="f.parking">Llegaré en vehículo propio</span>
+            </label>
+            <p class="chk-note" id="rsvParkNote" hidden data-i18n="f.parking.note">Al enviar la reserva te confirmamos por WhatsApp la disponibilidad de estacionamiento.</p>
+          </div>
         </div>
         <p class="rsv-error" id="rsvError" role="alert" hidden></p>
         <button class="pill pill--accent rsv-submit" type="submit" data-i18n="f.submit">Enviar reserva por WhatsApp</button>
@@ -403,7 +530,6 @@
   </div>
   <div class="split-media">
     <img src="assets/img/reservas-local.jpg" alt="Mesa servida en el salón de Pachanka, con la barra al fondo" data-i18n-alt="alt.salon" width="1200" height="1500" loading="lazy" decoding="async" data-parallax="8">
-    <span class="caption caption--light" data-i18n="cap.ref">Imagen referencial</span>
   </div>
 </section>
 
@@ -412,7 +538,7 @@
   <div class="events-head">
     <h2 class="title title--teal rv" data-i18n="nav.events">Eventos y celebraciones</h2>
     <p class="strong rv" data-i18n="ev.q">¿Planeas un cumpleaños o una reunión?</p>
-    <p class="rv" data-i18n="ev.p1">Música criolla en vivo, noches de latin pop, partidos en pantalla y mesas largas para celebrar. Armamos la reunión contigo: decoración, entradas para compartir y la barra lista.</p>
+    <p class="rv" data-i18n="ev.p1">Música criolla en vivo los viernes de quincena y de fin de mes, partidos en pantalla y mesas largas para celebrar. Armamos la reunión contigo: decoración, entradas para compartir y la barra lista.</p>
     <p class="strong rv" data-i18n="ev.p2">Cuéntanos la fecha y el número de personas.</p>
     <p class="rv" data-i18n="ev.p3">El equipo de Pachanka te ayuda a organizar una celebración para recordar.</p>
   </div>
@@ -456,7 +582,7 @@
 <!-- PIE -->
 <footer class="ftr">
   <div class="ftr-grid">
-    <a class="ftr-logo" href="#inicio" aria-label="Volver al inicio" data-i18n-aria="ftr.home"><span class="wm" data-wm></span></a>
+    <a class="ftr-logo" href="#inicio" aria-label="Volver al inicio" data-i18n-aria="ftr.home"><img class="logo" src="assets/img/logo-oscuro.png" alt="Pachanka" width="740" height="221" loading="lazy"></a>
     <div class="ftr-col">
       <h4 data-i18n="ftr.about">Acerca de Pachanka</h4>
       <a href="#un-dia" data-i18n="nav.day">Un día en Pachanka</a>
@@ -476,10 +602,10 @@
     </div>
     <div class="ftr-col ftr-social">
       <div class="social">
-        <a href="https://www.facebook.com/pachanka.restaurant/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.1v3h2.5V21h2.9z"/></svg></a>
-        <a href="https://www.instagram.com/pachanka.restaurant/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM21 8.1c-.1-1.5-.4-2.8-1.5-3.9S17.1 2.8 15.6 2.7c-1.5-.1-6-.1-7.5 0-1.5.1-2.8.4-3.9 1.5S2.8 6.6 2.7 8.1c-.1 1.5-.1 6 0 7.5.1 1.5.4 2.8 1.5 3.9s2.4 1.4 3.9 1.5c1.5.1 6 .1 7.5 0 1.5-.1 2.8-.4 3.9-1.5s1.4-2.4 1.5-3.9c.1-1.5.1-6 0-7.5zM19.1 17.3a3 3 0 0 1-1.7 1.7c-1.2.5-3.9.4-5.4.4s-4.2.1-5.4-.4a3 3 0 0 1-1.7-1.7c-.5-1.2-.4-3.9-.4-5.4s-.1-4.2.4-5.4a3 3 0 0 1 1.7-1.7c1.2-.5 3.9-.4 5.4-.4s4.2-.1 5.4.4a3 3 0 0 1 1.7 1.7c.5 1.2.4 3.9.4 5.4s.1 4.2-.4 5.4z"/></svg></a>
-        <a href="https://www.tiktok.com/@pachanka.restaura" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.5.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
-        <a href="https://wa.me/51971969101" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z"/></svg></a>
+        <a href="https://www.facebook.com/pachanka.restaurant/" target="_blank" rel="noopener" class="s-fb" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.1v3h2.5V21h2.9z"/></svg></a>
+        <a href="https://www.instagram.com/pachanka.restaurant/" target="_blank" rel="noopener" class="s-ig" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM21 8.1c-.1-1.5-.4-2.8-1.5-3.9S17.1 2.8 15.6 2.7c-1.5-.1-6-.1-7.5 0-1.5.1-2.8.4-3.9 1.5S2.8 6.6 2.7 8.1c-.1 1.5-.1 6 0 7.5.1 1.5.4 2.8 1.5 3.9s2.4 1.4 3.9 1.5c1.5.1 6 .1 7.5 0 1.5-.1 2.8-.4 3.9-1.5s1.4-2.4 1.5-3.9c.1-1.5.1-6 0-7.5zM19.1 17.3a3 3 0 0 1-1.7 1.7c-1.2.5-3.9.4-5.4.4s-4.2.1-5.4-.4a3 3 0 0 1-1.7-1.7c-.5-1.2-.4-3.9-.4-5.4s-.1-4.2.4-5.4a3 3 0 0 1 1.7-1.7c1.2-.5 3.9-.4 5.4-.4s4.2-.1 5.4.4a3 3 0 0 1 1.7 1.7c.5 1.2.4 3.9.4 5.4s.1 4.2-.4 5.4z"/></svg></a>
+        <a href="https://www.tiktok.com/@pachanka.restaura" target="_blank" rel="noopener" class="s-tt" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.5.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+        <a href="https://wa.me/51971969101" target="_blank" rel="noopener" class="s-wa" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z"/></svg></a>
       </div>
       <a class="pill pill--line" href="#reservar" data-i18n="cta.book">Reserva aquí</a>
     </div>

@@ -16,13 +16,13 @@ y la carta digital en [pachanka-carta-digital](https://github.com/creative-progr
 
 ## Secciones
 
-- Pantalla de carga con el logo animado
+- Pantalla de carga con el logotipo del restaurante, que entra letra por letra
 - Portada con tres fotos a pantalla completa
-- Un día en Pachanka: la sección se fija al hacer scroll y recorre el día por horas (almuerzo, piqueos, after office y música en vivo)
+- Un día en Pachanka: la sección se fija al hacer scroll y recorre el día por horas (almuerzo, entradas, after office y música en vivo). Mientras está fija avisa que la página sigue
 - Carta en paneles: nuestros clásicos, del mar a tu plato y criollo fusión
 - Carta completa en un panel lateral, con las 10 categorías de su carta vigente
 - Los platos en video: cinta que corre sola y, al tocar un video, se expande sobre la página con el nombre, la descripción y el precio del plato
-- Reseñas: calificación y temas reales de Google Maps
+- Reseñas: la calificación y los temas de Google Maps, y seis reseñas reales que van pasando, con su nombre y sus estrellas
 - Reservas con formulario que abre WhatsApp con el mensaje listo
 - Eventos y celebraciones
 - Ubicación con mapa y horarios
@@ -30,9 +30,10 @@ y la carta digital en [pachanka-carta-digital](https://github.com/creative-progr
 ## Funciones
 
 - **Abierto ahora / Cerrado** según la hora de Lima (lunes a sábado 12–23 h, domingo 12–18 h)
-- **Formulario de reserva**: solo ofrece horarios válidos para el día elegido y arma el mensaje de WhatsApp
+- **Formulario de reserva**: solo ofrece horarios válidos para el día elegido y arma el mensaje de WhatsApp. Si el comensal llega en vehículo propio, lo avisa en el mensaje y la web le dice que el estacionamiento se confirma por el chat
 - **Español / inglés**, con la preferencia guardada en el navegador
-- **Videos**: los ocho clips se descargan solo cuando la sección entra en pantalla y se detienen al salir
+- **Videos**: los seis clips se descargan solo cuando la sección entra en pantalla y se detienen al salir. Las tarjetas avisan que el video se abre en grande y hay flechas a los lados para que se note que la cinta sigue
+- **Avisos de scroll**: donde el scroll puede confundir (la sección fija, la carta completa y las categorías) hay una flecha o un degradado que indica que queda contenido
 - **Ficha para Google** (datos estructurados de restaurante) e imagen para compartir en redes
 
 ## Estructura
@@ -40,11 +41,11 @@ y la carta digital en [pachanka-carta-digital](https://github.com/creative-progr
 ```
 index.html          Página
 css/styles.css      Estilos
-js/intro.js         Pantalla de carga
 js/menu-data.js     Carta completa (español e inglés) — mismo archivo que la carta digital
 js/i18n.js          Traducciones al inglés
 js/main.js          Menú, carta, reservas, estado de apertura, idioma y animaciones
-assets/img/         Fotos del local y de la portada, e imagen para compartir (og-image.jpg)
+assets/img/         Fotos del local y de la portada, logotipo e imagen para compartir (og-image.jpg)
+assets/img/logo/    El logotipo en piezas: una imagen por letra, para que entre letra por letra
 assets/platos/      Una foto por plato, con el mismo id que en menu-data.js (aún sin usar en esta página)
 assets/video/       Videos de los platos (8 s, 720 px) con su miniatura, para la cinta de videos
 assets/sketch/      Ilustraciones a tinta de la carta (sin usar desde que los paneles llevan foto)
